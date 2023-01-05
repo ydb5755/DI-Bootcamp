@@ -1,3 +1,46 @@
 *{
     box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+}
+nav{
+    background-color: black;
+    color: white;
+    position: fixed;
+    width: 100vw;
+    height: 7vh;
+}
+ul{
+    list-style-type: none;
+    padding: 10px;
+}
+i{
+    color: white;
+}
+#crown{
+    float: left;
+    font-size: 20px;
+}
+#link{
+    float: right;
+    font-size: 20px;
+    text-transform:uppercase;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+footer{
+    background-color: black;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 7vh;
+}
+p{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    padding-top: 10px;
 }
