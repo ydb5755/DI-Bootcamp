@@ -1,0 +1,75 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /*border: 1px solid black;*/
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+body{
+    background-color: #f4f4f6;
+    width: 50vw;
+    height: 100vh;
+    padding: 10px 10px 10px 20px;
+}
+header{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 2px grey solid;
+    
+}
+#firstname{
+    font-size: 1.5em;
+}
+#secondname{
+    font-size: 3em;
+    font-weight: bold;
+}
+#prof{
+    font-size: 1em;
+    color: grey;
+}
+main{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+#propic{
+    width: 100%;
+    height: 100%;
+    border-bottom: 10px solid orange;
+}
+.underlined{
+    border-bottom: 2px solid orange;
+}
+h3{
+    letter-spacing: .3em;
+}
+.topleft{
+    height: 50%;
+    width: 30%;
+    border-right:2px grey solid ;
+    border-bottom:2px grey solid ;
+}
+.topright{
+    height: 50%;
+    width: 70%;
+    border-left:2px grey solid ;
+    border-bottom:2px grey solid ;
+}
+.bottomleft{
+    height: 50%;
+    width: 30%;
+    border-right:2px grey solid ;
+    border-top:2px grey solid ;
+}
+.bottomright{
+    height: 50%;
+    width: 70%;
+    border-left:2px grey solid ;
+    border-top:2px grey solid ;
+}
