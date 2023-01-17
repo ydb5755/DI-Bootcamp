@@ -8,7 +8,7 @@
 
 // let favFood = "Lasagna";
 // let favMeal = "Lunch";
-// console.log("I eat " + favFood + " at every " + favMeal);
+// console.log(`I eat ${favFood} at every ${favMeal}`);
 
 // 🌟 Exercise 2 : Series
 // Instructions
@@ -22,6 +22,14 @@
 
 // Console.log a sentence using both of the variables created above
 // For example : I watched 3 series : black mirror, money heist, and the big bang theory
+
+// const myWatchedSeries = ["black mirror", "money heist", "the big bang theory"];
+// let myWatchedSeriesLength = myWatchedSeries.length;
+// let myWatchedSeriesSentence = myWatchedSeries[0] + ", " + myWatchedSeries[1] + ", and " + myWatchedSeries[2];
+// let finalSentence = `I watched ${myWatchedSeriesLength} series : ${myWatchedSeriesSentence}`;
+// console.log(finalSentence);
+
+//          Below is my first attempt at the exercise, Above is the second
 
 // const myWatchedSeries = ["black mirror", "money heist", "the big bang theory"];
 // let myWatchedSeriesLength = myWatchedSeries.length;
@@ -235,7 +243,6 @@
 // // Prediction: 1 
 // // Actual:1
 
-console.log("Bob" - "bill");
 // false - true
 // // Prediction: -1
 // // Actual: -1
