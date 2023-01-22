@@ -46,7 +46,7 @@
 // If it is even, display: “x is an even number”. Where x is the actual number the user chose.
 // If it is odd, display: “x is an odd number”. Where x is the actual number the user chose.
 
-// let num = prompt("Please enter a number");
+// let num = Number(prompt("Please enter a number"));
 // if(num == 0){
 //     alert("0 is not a number")
 // }else if(num%2 == 0){
@@ -88,5 +88,5 @@
 //         break;
 //     default:
 //         console.log(users[0] + ", " + users[1] + " and " + (len - 2) + " more are online");
-//         break;
+        
 // }
