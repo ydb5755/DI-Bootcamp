@@ -155,10 +155,12 @@ const building = {
 //   is: 'Rudolf',
 //   the: 'raindeer'
 // }
+// let phrase = '';
 // for (const property in details){
-//     console.log(`${property}`);
-//     console.log(`${details[property]}`);
+//     phrase += property + ' ';
+//     phrase += details[property] + ' ';
 // }
+// console.log(phrase);
 // Given the object above and using a for loop, console.log “my name is Rudolf the raindeer”
 
 
@@ -174,6 +176,5 @@ for(let i = 0; i < names.length; i++){
 }
 let arr = code.split('');
 arr = arr.sort();
-arr = arr.join();
-arr = arr.replaceAll(',', '')
+arr = arr.join('');
 console.log(arr);
