@@ -166,16 +166,15 @@ const building = {
 
 // Exercise 7 : Secret Group
 // Instructions
-// const names = ["Jack", "Philip", "Sarah", "Amanda", "Bernard", "Kyle"];
+const names = ["Jack", "Philip", "Sarah", "Amanda", "Bernard", "Kyle"];
 // A group of friends have decided to start a secret society. The society’s name will be the first letter of each of their names sorted in alphabetical order.
 // Hint: a string is an array of letters
 // Console.log the name of their secret society. The output should be “ABJKPS”
-// var code = "";
-// for(let i = 0; i < names.length; i++){
-//     code = code + names[i][0];
-// }
-// let arr = code.split('');
-// arr = arr.sort();
-// arr = arr.join();
-// arr = arr.replaceAll(',', '')
-// console.log(arr);
+var code = "";
+for(let i = 0; i < names.length; i++){
+    code = code + names[i][0];
+}
+let arr = code.split('');
+arr = arr.sort();
+arr = arr.join('');
+console.log(arr);
