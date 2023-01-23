@@ -1,10 +1,17 @@
-function myAge (age){
-    let mumage = age * 2;
-    let dadage = mumage * 1.2;
+// function myAge (age){
+//     let mumage = age * 2;
+//     let dadage = mumage * 1.2;
 
-    // console.log(dadage);
-    // console.log(mumage);
-    return mumage;
+//     console.log(dadage);
+//     console.log(mumage);
+//     return age;
+// }
+// let age = myAge(27);
+// console.log(age);
+var mango = "yellow"
+
+if (mango === "yellow"){
+  var mango = "blue"
+  console.log(mango)
 }
-let age = myAge(27);
-console.log(age);
+console.log(mango)
