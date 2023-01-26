@@ -43,7 +43,7 @@
 // Call the calculateTip() function.
 
 // function calculateTip(){
-//     let bill = prompt("How much is the bill?");
+//     let bill = Number( prompt("How much is the bill?"));
 //     switch (true){
 //         case bill < 50:
 //             console.log(`Your tip is $${bill*.2} and your total is $${+bill + +bill*.2}`);
@@ -71,10 +71,10 @@
 // 391 414 437 460 483
 // Sum : 5313
 
-// function isDivisible(){
+// function isDivisible(divisor = 23){
 //     var sum = 0;
 //     for(let i = 0; i < 500; i++){
-//         if(i%23 == 0){
+//         if(i%divisor == 0){
 //             console.log(i);
 //             sum += i;
 //         }
@@ -211,13 +211,12 @@
 // The hotel costs $140 per night. The function should return the total price of the hotel.
 function hotelCost(){
     let nights = prompt("Please enter the number of nights you would like to stay at the hotel");
-    while (isNaN(nights) == true || nights === ""){
+    while (isNaN(nights) == true || nights < 0 || nights === ""){
         nights = prompt("Please enter the number of nights you would like to stay at the hotel");
     } 
     let price = nights * 140; 
     return price;  
 }
-
 // Define a function called planeRideCost().
 // It should ask the user for their destination.
 // If the user doesn’t answer or if the answer is not a string, ask again.
