@@ -1,12 +1,17 @@
 // Instructions
 // Prompt the user for several words (separated by commas).
+
 let words = prompt("Please enter several words separated by commas");
+
 // Put the words into an array.
+
 let arr = words.split(",");
+
 // Console.log the words one per line, in a rectangular frame as seen below.
 // Check out the Hints and Requirements below.
+
 function longest(array){
-    let longWord = "";
+    var longWord = "";
     for(let i = 0; i < array.length; i++){
         if(longWord.length < array[i].length){
             longWord = array[i];
@@ -15,6 +20,11 @@ function longest(array){
     return longWord.length;
 }
 let star = "*";
+let space = " ";
+console.log(`**${star.repeat(longest(arr))}**`);
+for(let i = 0; i < arr.length; i++){
+    console.log(`* ${arr[i]}${space.repeat(longest(arr)-arr[i].length)} *`);
+}
 console.log(`**${star.repeat(longest(arr))}**`);
 
 
