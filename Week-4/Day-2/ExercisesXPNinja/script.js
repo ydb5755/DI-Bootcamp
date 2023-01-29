@@ -3,6 +3,13 @@
 // Get a random number between 1 and 100.
 // Console.log all even numbers from 0 to the random number.
 
+// const random  = Math.round((Math.random()*99)+1);
+// for(let i = 0; i < random; i++){
+//     if(i%2 == 0){
+//         console.log(i);
+//     }
+// }
+
 
 // Exercise 2: Capitalized Letters
 // Instructions
@@ -18,6 +25,28 @@
 
 // capitalize("abcdef") will return ['AbCdEf', 'aBcDeF']
 
+
+// function capitalize(string){
+//     let result =[];
+//     let even = string.split('');
+//     let odd = string.split('');
+//     for(let i = 0;i < even.length;i++){
+//         if(i%2 == 0){
+//             even[i] = even[i].toUpperCase();
+//         }
+//     }
+//     for(let i = 0;i < odd.length;i++){
+//         if(i%2 == 1){
+//             odd[i] = odd[i].toUpperCase();
+//         }
+//     }
+//     even = even.join('');
+//     odd = odd.join('');
+//     result.push(even);
+//     result.push(odd);
+//     return result;
+// }
+// console.log(capitalize("abcdef"));
 
 // Exercise 3 : Is Palindrome?
 // Instructions
