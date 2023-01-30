@@ -1,0 +1,12 @@
+button {
+    width:70px;
+    height:70px;
+  }
+.bottomRow{
+    width:144px;
+}
+#display{
+    width:290px;
+    height:70px;
+    border:1px black solid;
+}
