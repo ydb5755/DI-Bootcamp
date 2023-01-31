@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+</head>
+<body>
+    <div id="container">Users:</div>
+    <ul class="list">
+        <li>John</li>
+        <li>Pete</li>
+    </ul>
+    <ul class="list">
+        <li>David</li>
+        <li>Sarah</li>
+        <li>Dan</li>
+    </ul>
+    <script>
+        let elem = document.getElementById('container');
+        console.log(elem);
+
+
+        let change1 = elem.nextElementSibling.children[1];
+        let pete = change1.removeChild(change1.firstChild);
+        let richard = document.createTextNode('Richard');
+        change1.appendChild(richard);
+        console.log(change1.firstChild);
+
+        let uls = document.querySelector('.list:nth-of-type(1) > li');
+        uls.innerText = 'Yisroel';
+        let uls1 = document.querySelector('.list:nth-of-type(2) > li');
+        uls1.innerText = 'Yisroel';
+        let uls2 = document.querySelector('.list:nth-of-type(2) > li:nth-of-type(2)');
+        uls2.remove();
+
+        let firstUL = document.querySelector('ul');
+        firstUL.classList.add('student_list', 'university', 'attendance');
+        let secondUL = document.querySelector('ul:nth-of-type(2)');
+        secondUL.classList.add('student_list');
+        console.log(firstUL.classList, secondUL.classList)
+    </script>
+</body>
+</html>
