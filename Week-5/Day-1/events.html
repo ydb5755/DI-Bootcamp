@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button id="btn">Click me</button>
+    <button id="btn1">Hey Hey</button>
+    <button id="jsstyle">Style</button> 
+    <input type="text" onchange="alert(this.value)">
+    <input type="button" value="Button">
+    <br>
+    <input type="text" id="input"> ONINPUT <span id="result"></span> -->
+
+
+    <!-- <script>
+        let x = document.getElementById("btn")
+        let y = document.getElementById("btn1")
+
+        y.addEventListener("click", RespondClick);
+        y.addEventListener("mouseover", RespondMouseOver);
+
+        x.addEventListener("click", RespondClick); 
+        x.addEventListener("mouseover", RespondMouseOver); 
+        x.addEventListener("mouseout", RespondMouseOut); 
+        x.removeEventListener("mouseout",RespondMouseOut);
+        x.removeEventListener("mouseover", RespondMouseOver);
+        function RespondClick() { 
+            alert("Button Clicked")
+        } 
+
+        function RespondMouseOver() { 
+            alert("My mouse is over the btn")
+        } 
+
+        function RespondMouseOut() { 
+            alert("My mouse is out of the btn")
+        }     
+
+    </script> -->
+
+    <!-- <form id="form1" onsubmit="getvalue()"> 
+        <label>First name: </label><input type="text" name="fname" value="David"><br> 
+        <label>Last name: </label><input type="text" name="lname" value="BenGurion"><br> 
+        <input type="submit" value="Submit"> 
+    </form>  -->
+    <!-- <select id="select1"> 
+        <option value="apple">Middle School</option>
+        <option value="pear">University</option>
+        <option value="banana">College</option>
+    </select>
+    <button id="anAlert" value="clickMe">clickMe</button> -->
+    <table id="table">
+        <tr>
+          <td>Your age:</td>
+      
+          <td>
+            <label>
+              <input type="radio" name="age" value="young" > less than 18
+            </label>
+            <label>
+              <input type="radio" name="age" value="mature"checked> from 18 to 50
+            </label>
+            <label>
+              <input type="radio" name="age" value="senior" > more than 60
+            </label>
+          </td>
+        </tr>
+      </table>
+
+    <script>
+         let inputs = table.getElementsByTagName('input');
+
+        for (let input of inputs) {
+            alert( input.value + ': ' + input.checked );
+        }
+        // let sel = document.getElementById("select1");
+        // let work =document.createElement("option");
+        // work.value = "work";
+        // work.innerText = "Work"
+        // let primary =document.createElement("option");
+        // primary.value = "primarySchool";
+        // primary.innerText = "Primary School"
+        // sel.appendChild(work);
+        // sel.prepend(primary);
+        // // sel.options[3].selected = true;
+        // // sel.selectedIndex = 3;
+        // sel.value = "banana"
+        // let btn = document.getElementById("anAlert");
+        // btn.addEventListener("click", function(){
+        //     alert(sel.options[sel.selectedIndex].text);
+        // });
+
+
+        // function getvalue(){
+        //     console.log(document.getElementsByTagName('input')[0].value);
+        //     console.log(document.getElementsByTagName('input')[1].value);
+        //     event.preventDefault()
+        // }
+        // let x = document.getElementById("btn");
+        // let y = document.getElementById("btn1");
+        // let z = document.getElementById('jsstyle');
+
+        // y.addEventListener("mouseover", RespondMouseOver);
+
+        // x.addEventListener("mouseover", RespondMouseOver); 
+        // z.addEventListener("click", RespondClick);
+        // z.addEventListener("mouseover", zOver);
+
+        // function zOver(){
+        //     z.style.backgroundColor = "green";
+        // }
+
+        // function RespondClick(){
+        //     z.style.backgroundColor = "red";
+        // }
+
+        // function RespondMouseOver(e) { 
+        //     console.log("e", e) 
+        //     // all the properties of the event object
+        //     console.log("My mouse is over the btn named" + e.target.innerHTML)
+        //     console.log("e.type: ", e.type)
+        //     // e.type: mouseover
+        //     console.log("e.target: ", e.target)
+        //     // e.target:  <button id=​"btn1">​Hey Hey​</button>​
+        // } 
+        // let newInput =  document.getElementById('input')
+        // newInput.oninput = function() {
+        //     result.innerHTML = input.value;
+        // };
+    </script>
+</body>
+</html>

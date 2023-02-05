@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- <style>
+        div { border : 2px solid blue}
+        button { border : 2px solid red}
+    </style>
+
+    <section id="section">
+        <div id="div">
+            <button id="btn">Click me</button>
+        </div>
+    </section>
+    -->
+    <!-- <script>
+       let x = document.getElementById("btn")
+       let y = document.getElementById("div")
+       let z = document.getElementById("section")
+
+       x.addEventListener("click", XRespondClick); 
+       y.addEventListener("click", YRespondClick); 
+       z.addEventListener("click", ZRespondClick); 
+
+       function XRespondClick(e) { 
+           alert("BTN is Clicked")
+       }    
+
+       function YRespondClick(e) { 
+           alert("DIV is Clicked")
+       }    
+
+        function ZRespondClick(e) { 
+           alert("SECTION is Clicked")
+       }    
+
+        //Result if I click on the button
+        // Alert : BTN is Clicked
+        // Alert : DIV is Clicked
+        // Alert : SECTION is Clicked
+        // The event is triggered from the element that its clicked to the top 
+    </script>
+    -->
+    <style>
+        div { border : 2px solid blue}
+        button { border : 2px solid red}
+    </style>
+
+    <section id="section">
+        <div id="div">
+            <button id="btn">Click me</button>
+        </div>
+    </section>
+    <script>
+       let x = document.getElementById("btn")
+       let y = document.getElementById("div")
+       let z = document.getElementById("section")
+
+       x.addEventListener("click", XRespondClick, true); 
+       y.addEventListener("click", YRespondClick, true); 
+       z.addEventListener("click", ZRespondClick, true); 
+
+       function XRespondClick(e) { 
+           alert("BTN is Clicked")
+       }    
+
+       function YRespondClick(e) { 
+           alert("DIV is Clicked")
+       }    
+
+        function ZRespondClick(e) { 
+           alert("SECTION is Clicked");
+           e.stopPropagation()
+       }  
+
+        //Result if I click on the button
+        // Alert : SECTION is Clicked
+        // Alert : DIV is Clicked
+        // Alert : BTN is Clicked
+        // --> The event is triggered from the top to the element that what clicked 
+
+    </script>
+
+</body>
+</html>
