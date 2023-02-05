@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+
+    <button onclick="myStopFunction()">Stop time</button>
+
+    <script>
+    let timer = setInterval(myTimer, 1000);
+    let num = 10;
+    function myTimer() {
+    // let date = new Date();
+    // let time = date.toLocaleTimeString();
+    // date.toLocaleTimeString() returns a string with a language sensitive representation of the time portion of this date
+        let time = `The sales end in ${num}sec !`;
+        if(num ==0){
+            clearInterval(timer);
+        }
+        num--;
+
+
+        document.getElementById("demo").innerHTML = time;
+    }
+
+    // function myStopFunction() {
+    // clearInterval(timer);
+    // }
+    </script>
+</body>
+</html>
