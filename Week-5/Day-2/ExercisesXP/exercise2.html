@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise2</title>
+</head>
+<body>
+    <form>
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname"><br><br>
+        <input type="submit" value="Submit" id="submit">
+      </form> 
+      <ul class="usersAnswer"></ul>
+
+      <script>
+        // console.log(document.forms);
+        let in1 = document.getElementById("fname");
+        let in2 = document.getElementById("lname");
+        // console.log(in1.name);
+        // console.log(in2.name);
+
+        document.getElementById("submit").addEventListener("click", function(){
+            event.preventDefault();
+            let val1 = in1.value;
+            let val2 = in2.value;
+            if(val1.length > 0 && val2.length > 0){
+                let ourList = document.querySelector("ul");
+                let firstli = document.createElement("li");
+                let secondli = document.createElement("li");
+                firstli.append(val1);
+                secondli.append(val2);
+                ourList.appendChild(firstli);
+                ourList.appendChild(secondli);
+            }
+        })
+      </script>
+</body>
+</html>

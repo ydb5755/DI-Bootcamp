@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise1</title>
+</head>
+<body>
+    <article>
+        <h1> Some Facts </h1>
+        <h2> The Chocolate </h2>
+        <h3> History of the chocolate </h3>
+        <p> Chocolate is made from tropical Theobroma cacao tree seeds. 
+        Its earliest use dates back to the Olmec civilization in Mesoamerica.</p>
+        <p> After the European discovery of the Americas, chocolate became 
+        very popular in the wider world, and its demand exploded. </p>
+        <p> Chocolate has since become a popular food product that millions enjoy every day, 
+        thanks to its unique, rich, and sweet taste.</p> 
+        <p> But what effect does eating chocolate have on our health?</p> 
+    </article>
+    <button value="clickMe" id="clickMe">Click Me</button>
+    <script>
+        console.log(document.querySelector("h1"));
+        let lastC = document.querySelector("article").lastElementChild;
+        document.querySelector("article").removeChild(lastC);
+        let hTwo = document.querySelector("h2");
+        hTwo.addEventListener("click", function(){
+            hTwo.style.backgroundColor = "red";
+        });
+        let hThree = document.querySelector("h3");
+        hThree.addEventListener("click", function(){
+            hThree.style.display = "none";
+        });
+        let btn = document.querySelector("button");
+        let ps = document.querySelectorAll("p");
+        console.log(ps);
+        btn.onclick = function(){
+            for (p of ps){
+                p.style.fontWeight = "bold";
+            };
+        };
+    </script>
+</body>
+</html>

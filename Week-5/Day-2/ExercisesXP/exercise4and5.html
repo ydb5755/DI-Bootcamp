@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise4</title>
+    <style>  
+        body {
+            padding-top:30px;
+        } 
+
+        label,input {
+            display:block;
+        }  
+    </style> 
+</head>
+<body>
+    <p>Input radius value and get the volume of a sphere.</p> 
+        <form  id="MyForm"> 
+            <label for="radius">Radius</label><input type="text" name="radius" id="radius" required> 
+            <label for="volume">Volume</label><input type="text" name="volume" id="volume"> 
+            <input type="submit" value="Calculate" id="submit">    
+        </form> 
+
+
+    <script>
+        // V = 4/3 π r³
+        let rad = document.getElementById("radius");
+        let vol = document.getElementById("volume");
+        document.getElementById("submit").addEventListener("click", function(){
+            event.preventDefault();
+            let calculation = (4/3)*3.14*Math.pow(rad.value,3);
+            vol.value = calculation ;
+
+        });
+        document.getElementById("submit").addEventListener("mouseover",function(){
+            this.style.backgroundColor = 'red';
+        });
+        document.getElementById("submit").addEventListener("mouseout", function(){
+            this.style.backgroundColor = 'white';
+        });
+        document.getElementById("submit").addEventListener("dblclick", function(){
+            alert("AH! YOU DOUBLE CLICKED ME!")
+        })
+
+    </script>
+</body>
+</html>

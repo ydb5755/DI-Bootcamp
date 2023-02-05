@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise3</title>
+</head>
+<body>
+    <p><strong>Hello</strong> I hope you are enjoying <strong>this</strong> class. At the
+        <strong>end</strong> you <strong>will</strong> be great Developers!
+        <strong>Enjoy</strong> the <strong>JavaScript </strong> lessons</p>
+
+
+
+    <script>
+        var allBoldItems;
+        function getBold_items(){
+            allBoldItems = document.querySelectorAll("strong");
+            // return allBoldItems;
+        }
+        function highlight(){
+            getBold_items();
+            // let items = allBoldItems;
+            for (item of allBoldItems){
+                item.style.color = "blue";
+            }
+        }
+        function return_normal(){
+            getBold_items();
+            // let items = allBoldItems;
+            for (item of allBoldItems){
+                item.style.color = "black";
+            }
+        }
+        document.querySelector("p").addEventListener("mouseover", highlight);
+        document.querySelector("p").addEventListener("mouseout", return_normal);
+    </script>
+</body>
+</html>
