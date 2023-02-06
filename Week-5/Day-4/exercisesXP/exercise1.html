@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1</title>
+    <style>
+        p {
+          background: yellow;
+          color: red;
+        }
+        </style>
+</head>
+<body>
+    
+    <div id="container"></div>
+    <button id="clear">Clear Interval</button>
+    <script>
+        // let hello = setTimeout(alertHello, 2000);
+        // function alertHello(){
+        //     alert('Hello World')
+        // }
+        let newP = setTimeout(addP, 2000);
+        var neverEnd = setInterval(addP, 2000);
+
+        let btn = document.getElementById("clear");
+        btn.addEventListener("click", function(){
+            clearInterval(neverEnd);
+        });
+        let p = document.createElement("p");
+        let div = document.getElementById("container");
+        let helloworld = document.createTextNode("Hello World!");
+
+
+        function addP(){
+            if(div.children.length < 5){
+                let p = document.createElement("p");
+                let div = document.getElementById("container");
+                let helloworld = document.createTextNode("Hello World!");
+                p.appendChild(helloworld);
+                div.appendChild(p);
+            }
+        }
+        
+    </script>
+</body>
+</html>
