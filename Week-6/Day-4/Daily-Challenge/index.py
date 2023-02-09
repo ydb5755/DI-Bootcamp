@@ -33,9 +33,7 @@
 # user's word : "cccccaaarrrbbonnnnn" ➞ "carbon"
 # Notes
 # Final strings won’t include words with double letters (e.g. “passing”, “lottery”).
-# word = input("please enter your weird mutated word that you need me to fix because you cant do it yourself: ")
-# word = list(word)
-word = ['t','t','t','w','w','i','s','t']
+word = input("please enter your weird mutated word that you need me to fix because you cant do it yourself: ")
 output = []
 previous_value = None
 for elem in word:
