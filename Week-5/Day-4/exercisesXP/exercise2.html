@@ -27,8 +27,15 @@
         </div>
     <script>
         let box = document.getElementById("animate");
+        let counter = 0;
         function myMove(){
-            box.style.backgroundColor = 'white';
+            let stopMe = setInterval(animation, 1);
+        }
+        function animation(){
+            if(counter < 350){
+            box.style.left =  counter + "px";
+            counter++;
+            }
         }
     </script>
 </body>
