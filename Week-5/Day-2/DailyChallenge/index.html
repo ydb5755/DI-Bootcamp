@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <title>Challenge: Mad Libs</title>
+ </head>
+ <body>
+
+    <h1>Mad Libs</h1>
+
+    <form id="libform">
+        <label for="noun">Noun:</label><input type="text" id="noun"><br>
+        <label for="adjective">Adjective:</label><input type="text" id="adjective"><br>
+        <label for="person">Someone's Name:</label><input type="text" id="person"><br>
+        <label for="verb">Verb:</label><input type="text" id="verb"><br>
+        <label for="place">A place:</label><input type="text" id="place"><br>
+        <button id="lib-button">Lib it!</button>
+    </form>
+
+    <p>Generated story: 
+    <span id="story"></span>
+    </p>
+
+    <script>
+        let in1 = document.getElementById("noun");
+        let in2 = document.getElementById("adjective");
+        let in3 = document.getElementById("person");
+        let in4 = document.getElementById("verb");
+        let in5 = document.getElementById("place");
+
+        document.getElementById("lib-button").addEventListener("click", function(){
+            event.preventDefault();
+            let story = document.getElementById("story");
+            let val1 = in1.value;
+            let val2 = in2.value;
+            let val3 = in3.value;
+            let val4 = in4.value;
+            let val5 = in5.value;
+
+            if(val1.length > 0 && val2.length > 0 && val3.length > 0 && val4.length > 0 && val5.length > 0){
+                let spn = document.createElement("span");
+                let word1 = document.createTextNode(val1 + " ");
+                let word2 = document.createTextNode(val2 + " ");
+                let word3 = document.createTextNode(val3 + " ");
+                let word4 = document.createTextNode(val4 + " ");
+                let word5 = document.createTextNode(val5 + " ");
+                spn.appendChild(word1);
+                spn.appendChild(word2);
+                spn.appendChild(word3);
+                spn.appendChild(word4);
+                spn.appendChild(word5);
+                story.appendChild(spn);
+            };
+        });
+
+    </script>
+
+ </body>
+</html>
