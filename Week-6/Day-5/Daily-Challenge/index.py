@@ -17,10 +17,9 @@
 # for char in x:
 #     if char in indx:
 #         indx[char].append(i)
-#         i += 1
 #     else:
 #         indx[char] = [x.index(char)]
-#         i += 1
+#     i += 1
 # print(indx)
 
 # Challenge 2

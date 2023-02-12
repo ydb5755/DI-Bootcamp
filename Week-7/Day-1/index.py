@@ -1,8 +1,8 @@
-a = {1, 2, 3, 4, 5}
-b = {2, 3, 6, 7, 5}
-c = a^b 
-print(c)
-d = a - b
-print(d)
-e = b - a 
-print(e)
+
+def calculation(a, b):
+    add = a + b
+    subtract = a - b
+    return add, subtract
+
+res = calculation(40, 10)
+print(res)
