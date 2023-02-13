@@ -18,15 +18,15 @@
 
 # Hlrolelwod
 import random
-the_string = input("please input a string 10 characters long ")
-the_string_length = len(the_string)
-while the_string_length != 10:
-    if the_string_length < 10:
-        print("string not long enough")
-    else:
-        print("string too long")
+while True:
     the_string = input("please input a string 10 characters long ")
     the_string_length = len(the_string)
+    if the_string_length < 10:
+        print("string not long enough")
+    elif the_string_length > 10:
+        print("string too long")
+    else:
+        break
 print(the_string[0])
 print(the_string[-1])
 construct_string = ""
