@@ -138,8 +138,6 @@
 #     if age == 'done':
 #         break
 #     age = int(age)
-#     if age < 3:
-#         continue # it's redundant, there is no need for this check
 #     if 3 <= age < 12:
 #         total += 10
 #     if age >= 12:
