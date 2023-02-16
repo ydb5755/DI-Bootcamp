@@ -14,6 +14,7 @@ def player_input(player):
         column = input("Enter column: ")
         if regex.search(row) and regex.search(column):
             break
+        print('Please only enter 1,2 or 3')
     row = int(row)
     column = int(column)
     matrix[row-1][column-1] = player
@@ -48,9 +49,7 @@ def check_win():
     for li in matrix:
         for char in li:
             test.append(char)
-    if empty in test:
-        pass
-    else:
+    if empty not in test:
         print('It\'s a tie!')
         return False
     
