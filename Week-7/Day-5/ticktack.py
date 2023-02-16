@@ -18,6 +18,7 @@ def player_input(player):
     column = int(column)
     matrix[row-1][column-1] = player
 def check_win():
+    # split this function into sperate funcitons like: is_win_in_row, is_win_in_column, etc..
     for horizontal in matrix:
         if horizontal == ['X','X','X']:
             print('X wins!')
@@ -49,7 +50,7 @@ def check_win():
         for char in li:
             test.append(char)
     if empty in test:
-        pass
+        pass # it's redundant
     else:
         print('It\'s a tie!')
         return False
