@@ -9,8 +9,6 @@ def create_board():
     print(f'*****************\n*   {matrix[0][0]} | {matrix[0][1]} | {matrix[0][2]}   *\n*  ---|---|---  *\n*   {matrix[1][0]} | {matrix[1][1]} | {matrix[1][2]}   *\n*  ---|---|---  *\n*   {matrix[2][0]} | {matrix[2][1]} | {matrix[2][2]}   *\n*****************')
 def player_input(player):
     print(f'Player {player}\'s turn...')
-    # row = input("Enter row: ")
-    # column = input("Enter column: ")
     while True:
         row = input("Enter row: ")
         column = input("Enter column: ")
