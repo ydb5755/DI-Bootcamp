@@ -19,6 +19,7 @@ def player_input(player):
     column = int(column)
     matrix[row-1][column-1] = player
 def check_win():
+        # split each code into functions, like is_win_by_row, is_win_by_column, etc... 
     for horizontal in matrix:
         if horizontal == ['X','X','X']:
             print('X wins!')
@@ -45,7 +46,7 @@ def check_win():
             print('O wins!')
             return False
     empty = ' '
-    test = []
+    test = [] # please use more meaningfull names
     for li in matrix:
         for char in li:
             test.append(char)
