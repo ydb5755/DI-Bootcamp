@@ -12,8 +12,7 @@ def sorting(str):
     lowercase_str = str.lower()
     split_list = lowercase_str.split(',')
     sorted_list = sorted(split_list)
-    sorted_string = (',').join(sorted_list)
-    return sorted_string
+    return (',').join(sorted_list)
 
 
 print(sorting('without,hello,bag,world'))
