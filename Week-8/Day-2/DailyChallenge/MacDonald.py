@@ -32,7 +32,7 @@ class Farm:
     def __init__(self, name):
         self.animals = {}
         self.name = name
-    def add_animal(self, name:str, amount:int = 1):
+    def add_animal(self, name:str, amount:int = 1): # you can make this function in just a single line: self.animals[name] = self.animals.get(name, 0) + amount
         if name in self.animals.keys():
             self.animals[name] = self.animals[name] + amount
         else:
