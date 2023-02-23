@@ -53,3 +53,58 @@
 # Please set the p.totalPages and p.currentPage attributes to the appropriate number as there cannot be a page 0.
 # If a page is outside of the totalPages attribute, then the goToPage method should go to the closest page to the number provided 
 # (e.g. there are only 5 total pages, but p.goToPage(10) is given: the p.currentPage should be set to 5; if 0 or a negative number is given, p.currentPage should be set to 1).
+
+class Pagination():
+    def __init__(self, items = [], pagesize = 10):
+        self.items = items
+        self.pagesize = pagesize
+        self.pages = {}
+        pageslice = slice(pagesize)
+        i=1
+        while len(self.items) > 0:
+            self.pages[i] = items[pageslice]
+            del items[0:pagesize]
+            i += 1
+        self.currentPage = 1
+        self.numberOfPages = len(self.pages)
+    def getVisibleItems(self):
+        print(self.pages[self.currentPage])
+
+    def prevPage(self):
+        self.currentPage -= 1
+        if self.currentPage < 1:
+            self.currentPage = 1
+
+    def nextPage(self):
+        self.currentPage += 1
+        if self.currentPage > self.numberOfPages:
+            self.currentPage = self.numberOfPages
+
+    def firstPage(self):
+        self.currentPage = 1
+
+    def lastPage(self):
+        self.currentPage = self.numberOfPages
+
+    def goToPage(self, number):
+        self.currentPage = number
+        if self.currentPage > self.numberOfPages:
+            self.currentPage = self.numberOfPages
+        if self.currentPage < 1:
+            self.currentPage = 1
+
+
+alphabetList = [*'abcdefghijklmnopqrstuvwxyz']
+
+p = Pagination(alphabetList, 5)
+p.getVisibleItems()
+p.nextPage()
+p.getVisibleItems()
+p.prevPage()
+p.getVisibleItems()
+p.lastPage()
+p.getVisibleItems()
+p.firstPage()
+p.getVisibleItems()
+p.goToPage(6)
+p.getVisibleItems()
