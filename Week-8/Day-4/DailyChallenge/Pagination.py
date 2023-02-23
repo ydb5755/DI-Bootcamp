@@ -57,54 +57,60 @@
 class Pagination():
     def __init__(self, items = [], pagesize = 10):
         self.items = items
-        self.pagesize = pagesize
+        self.pagesize = int(pagesize)
         self.pages = {}
-        pageslice = slice(pagesize)
+        pageslice = slice(int(pagesize))
         i=1
         while len(self.items) > 0:
             self.pages[i] = items[pageslice]
-            del items[0:pagesize]
+            del items[0:int(pagesize)]
             i += 1
         self.currentPage = 1
         self.numberOfPages = len(self.pages)
     def getVisibleItems(self):
         print(self.pages[self.currentPage])
+        return self
 
     def prevPage(self):
         self.currentPage -= 1
         if self.currentPage < 1:
             self.currentPage = 1
+        return self
 
     def nextPage(self):
         self.currentPage += 1
         if self.currentPage > self.numberOfPages:
             self.currentPage = self.numberOfPages
+        return self
 
     def firstPage(self):
         self.currentPage = 1
+        return self
 
     def lastPage(self):
         self.currentPage = self.numberOfPages
+        return self
 
     def goToPage(self, number):
-        self.currentPage = number
+        self.currentPage = int(number)
         if self.currentPage > self.numberOfPages:
             self.currentPage = self.numberOfPages
         if self.currentPage < 1:
             self.currentPage = 1
+        return self
 
 
 alphabetList = [*'abcdefghijklmnopqrstuvwxyz']
 
-p = Pagination(alphabetList, 5)
-p.getVisibleItems()
-p.nextPage()
-p.getVisibleItems()
-p.prevPage()
-p.getVisibleItems()
-p.lastPage()
-p.getVisibleItems()
-p.firstPage()
-p.getVisibleItems()
-p.goToPage(6)
-p.getVisibleItems()
+p = Pagination(alphabetList, 4.9)
+p.getVisibleItems().nextPage().getVisibleItems().prevPage().getVisibleItems().lastPage().getVisibleItems().firstPage().getVisibleItems().goToPage(2.2).getVisibleItems()
+# p.nextPage()
+# p.getVisibleItems()
+# p.prevPage()
+# p.getVisibleItems()
+# p.lastPage()
+# p.getVisibleItems()
+# p.firstPage()
+# p.getVisibleItems()
+# p.goToPage(2.2)
+# p.getVisibleItems()
