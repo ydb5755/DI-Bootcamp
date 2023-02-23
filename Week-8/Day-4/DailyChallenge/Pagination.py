@@ -58,7 +58,7 @@ class Pagination():
     def __init__(self, items = [], pagesize = 10):
         self.items = items
         self.pagesize = int(pagesize)
-        self.pages = {}
+        self.pages = {} # extract all the code to function like self.pages = create_pages()
         pageslice = slice(int(pagesize))
         i=1
         while len(self.items) > 0:
