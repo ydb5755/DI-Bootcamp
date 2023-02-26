@@ -15,10 +15,18 @@ function checkCashRegister(price, cash, cid) {
     let totalID = 0;
     for (let i = 0; i < cid.length; i++){
       totalID += cid[i][1];
+      totalID = Number(totalID.toFixed(2));
     };
     if(totalID < changeToGive){
       returnObject['status'] = 'INSUFFICIENT_FUNDS';
       return returnObject;
+    }
+    if(totalID > changeToGive){
+      returnObject['status'] = 'OPEN';
+    }
+    if(totalID == changeToGive){
+      returnObject['status'] = 'CLOSED';
+      // return returnObject;
     }
     // console.log(totalID);
     // console.log(changeToGive);
@@ -30,30 +38,35 @@ function checkCashRegister(price, cash, cid) {
           if (cid[coin][0] == item){
             let counter = 0;
             while(counter < divisible && cid[coin][1] >= values[item]){
-              cid[coin][1] -= values[item];
-              console.log(cid[coin][1])
-              console.log(values[item])
-              counter++;
+                cid[coin][1] -= values[item];
+                cid[coin][1] = cid[coin][1].toFixed(2)
+                // console.log(cid[coin][1]);
+                // console.log(values[item]);
+                counter++;
             }
             returnObject['change'].push([item,counter*values[item]]);
+            // console.log(counter, values[item])
             changeToGive -= counter*values[item];
+            changeToGive = changeToGive.toFixed(2)
+            // console.log(changeToGive)
           }
         }
       }
     }
-    if(totalID == changeToGive){
-      returnObject['status'] = 'CLOSED';
-      return returnObject;
-    }
-    if(changeToGive == 0){
-      returnObject['status'] = 'OPEN';
+    if(returnObject['status'] == 'CLOSED'){
+      let tempArr = [];
+      for(let i = 0; i < returnObject['change'].length;i++){
+        tempArr.unshift(returnObject['change'][i]);
+      }
+      returnObject['change'] = cid;
+      returnObject['change'][0] = tempArr[0];
     }
     if(changeToGive > 0){
       returnObject['status'] = 'INSUFFICIENT_FUNDS';
       returnObject['change'] = [];
     }
-    // console.log(totalID);
-    // console.log(changeToGive);
+    console.log(totalID);
+    console.log(changeToGive);
     // console.log(cid)
     // console.log(returnObject)
     return returnObject;
