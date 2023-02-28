@@ -125,3 +125,4 @@ regina = PetDog('regina', 6, 18)
 
 regina.train()
 regina.do_a_trick()
+print(regina.power)
