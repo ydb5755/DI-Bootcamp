@@ -8,7 +8,7 @@ class Human():
         self.age = age
         self.priority = priority
         self.family = []
-        while True:
+        while True: # export this code to a function
             if blood_type == "A" or blood_type == "B" or blood_type == "AB" or blood_type == "O":
                 self.blood_type = blood_type
                 break
@@ -16,7 +16,7 @@ class Human():
                 blood_type = input(f"Please enter a valid blood type for {self.name}(A, B, AB, or O)")
             self.blood_type = blood_type
     def add_family_member(self, person):
-        self.family.append(person)
+        self.family.append(person) # the family it's a list of person so for each person you need to add this instance to it's family list
         person.family.append(self)
 
 
@@ -44,7 +44,7 @@ class Queue():
         index1 = self.find_in_queue(person1)
         index2 = self.find_in_queue(person2)
         temp = self.humans[index1]
-        self.humans[index1] = self.humans[index2]
+        self.humans[index1] = self.humans[index2] # you can make it in one line without the temp like: self.humans[index1], self.humans[index2] = self.humans[index2], self.humans[index1]
         self.humans[index2] = temp
         return f"Swap complete, {self.humans[index2].name} has changed spots with {self.humans[index1].name} "
 
@@ -53,12 +53,12 @@ class Queue():
         # Every human returned by get_next and get_next_blood_type is removed from the list.
         temp = self.humans[0]
         self.humans.remove(self.humans[0])
-        return temp.name
+        return temp.name # or you can do: return self.humans.pop(0)
 
     def get_next_blood_type(self, blood_type):
         # Returns the first human with this specific blood type.
         # Every human returned by get_next and get_next_blood_type is removed from the list.
-        for human in self.humans:
+        for human in self.humans: # try to use the filter function
             if human.blood_type == blood_type:
                 temp = human
                 self.humans.remove(human)
