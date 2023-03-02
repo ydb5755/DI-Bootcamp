@@ -9,6 +9,7 @@
 # Bonus 2: Add an integer variable KEYS that holds a limited number of keys available to open locked doors (each key can be used only once).
 
 class Door():
+    # try to simplify the code by dividing it to small functions
     objs = 0
     keys = 3
     next = []
