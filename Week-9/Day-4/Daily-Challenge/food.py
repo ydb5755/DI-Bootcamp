@@ -19,7 +19,8 @@
 # p1.taste("cheese") ➞ "Sam eats the cheese!"
 
 # p1.taste("carrots") ➞ "Sam eats the carrots and hates it!"
-class Person():
+class Person(): 
+    # general note to add type annotation of list use List that you can imprt from typing
     def __init__(self, name, list_of_likes:list=[], list_of_hates:list=[]):
         self.name = name
         self.list_of_likes = list_of_likes
