@@ -20,6 +20,7 @@
 
 
 class Building():
+    # use List type annotations from typing
     def __init__(self, address:str, inhabitants:list=[]) -> None:
         self.address = address
         self.inhabitants = inhabitants
