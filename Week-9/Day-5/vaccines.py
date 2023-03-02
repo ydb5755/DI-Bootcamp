@@ -8,13 +8,17 @@ class Human():
         self.age = age
         self.priority = priority
         self.family = []
+        self.blood_type = blood_type
+        self.confirm_blood_type()
+
+    def confirm_blood_type(self):
         while True:
-            if blood_type == "A" or blood_type == "B" or blood_type == "AB" or blood_type == "O":
-                self.blood_type = blood_type
+            if self.blood_type == "A" or self.blood_type == "B" or self.blood_type == "AB" or self.blood_type == "O":
                 break
             else:
                 blood_type = input(f"Please enter a valid blood type for {self.name}(A, B, AB, or O)")
             self.blood_type = blood_type
+
     def add_family_member(self, person):
         self.family.append(person)
         person.family.append(self)
@@ -43,9 +47,10 @@ class Queue():
         #Swaps person1 with person2
         index1 = self.find_in_queue(person1)
         index2 = self.find_in_queue(person2)
-        temp = self.humans[index1]
-        self.humans[index1] = self.humans[index2]
-        self.humans[index2] = temp
+        # temp = self.humans[index1]
+        # self.humans[index1] = self.humans[index2]
+        # self.humans[index2] = temp
+        self.humans[index1], self.humans[index2] = self.humans[index2], self.humans[index1]
         return f"Swap complete, {self.humans[index2].name} has changed spots with {self.humans[index1].name} "
 
     def get_next(self):
@@ -85,7 +90,7 @@ class Queue():
         
 
 main = Queue()
-jeff = Human('jeff', 12, False, "B")
+jeff = Human('jeff', 12, False, "C")
 john = Human('john', 59, False, "A")
 jake = Human('jake', 78, False, "AB")
 judith = Human('judith', 58, True, "O")
