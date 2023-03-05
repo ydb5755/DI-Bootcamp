@@ -59,8 +59,6 @@
 # planes : The list of every plane that is currently in this airport. (see above the Airplane class)
 # scheduled_departures : The list of flight - Every future flight from this airport, sorted by date. (see above the Flight class)
 # scheduled_arrivals : The list of flight - Every future flight that will arrive to this airport, sorted by date. (see above the Flight class)
-
-
 # Methods:
 
 # schedule_flight(self, destination, datetime) :
@@ -73,8 +71,9 @@
 
 # Write a small code to test your program.
 
+import datetime
 class Airline():
-    def __init__(self, id, name:str, planes:list =[]):
+    def __init__(self, id:str, name:str, planes:list =[]):
         while True:
             if id.isalpha() and len(id) == 2:
                 self.id = id
@@ -85,18 +84,44 @@ class Airline():
         self.planes = planes
 
 class Airport():
-    def __init__(self) -> None:
-        pass
+    def __init__(self, city:str):
+        self.city = city
+        self.planes = []
+        self.scheduled_departures = []
+        self.scheduled_arrivals = []
+
+    def schedule_flight(self, destination, datetime:datetime):
+        # finds an available airplane from an airline, that serves the departure and the destination
+        # schedule the airplane for the flight
+        scheduled = False
+        for plane in self.planes:
+            if datetime not in plane.next_flights:
+                plane_to_schedule = plane
+                scheduled = True
+                break
+        if scheduled == False:
+            return print('there are no available planes to schedule this flight on this date')
+        flight_to_schedule = Flight(datetime, destination, self.city, plane_to_schedule)
+        plane_to_schedule.next_flights.append(flight_to_schedule)
+        destination.scheduled_arrivals.append(flight_to_schedule)
+        self.scheduled_departures.append(flight_to_schedule)
+        
+    def info(self, start_date:datetime, end_date:datetime):
+        # Displays every scheduled flight from start_date to end_date.
+        return filter(lambda x: (end_date > x > start_date), self.scheduled_departures)
+
 
 
 class Airplane():
     id = 0
-    def __init__(self, current_location:Airport, company:Airline, next_flight:list=[]):
+    def __init__(self, current_location:Airport, company:Airline, next_flights:list=[]):
         Airplane.id += 1
         self.id = Airplane.id
         self.current_location = current_location
         self.company = company
-        self.next_flight = next_flight
+        self.next_flights = next_flights
+        current_location.planes.append(self)
+        company.planes.append(self)
 
     def fly(self, destination):
         pass
@@ -115,24 +140,32 @@ class Flight():
         self.destination = destination
         self.origin = origin
         self.plane = plane
-        self.id = str(self.destination) + str(plane.company) + str(self.date)
+        self.id = str(self.destination.city) + str(plane.company.name) + str(self.date)
 
     def take_off(self):
+        # Those methods are here only to update the rest of the system, for example, to change the location of the plane when it reaches its destination:
         pass
 
     def land(self):
+        # Those methods are here only to update the rest of the system, for example, to change the location of the plane when it reaches its destination:
         pass
-# The Flight Class
-# Attributes:
 
-# date (datetime.Date)
-# destination : The destination airport. (see below the Airport class)
-# origin : The departure airport. (see below the Airport class)
-# plane : The plane used during this flight. (see above the Airplane class)
-# id (str) : The ID is an encoded string composed of the destination, the airlines code and the date.
-# Methods:
 
-# Those methods are here only to update the rest of the system, for example, to change the location of the plane when it reaches its destination:
-
-# take_off(self)
-# land(self)
+delta = Airline('DL', 'Delta')
+jetblue = Airline('JB', 'JetBlue')
+united = Airline('UN','United')
+ny = Airport('New York')
+la = Airport('Los Angeles')
+dallas = Airport('Dallas')
+Airplane(ny, delta)
+Airplane(ny, jetblue)
+Airplane(ny, united)
+Airplane(la, delta)
+Airplane(la, jetblue)
+Airplane(la, united)
+Airplane(dallas, delta)
+Airplane(dallas, jetblue)
+Airplane(dallas, united)
+dallas.schedule_flight(ny, (2023, 3, 5))
+print(ny.scheduled_arrivals[0].plane.company.name)
+print(dallas.scheduled_departures[0].plane.id)
