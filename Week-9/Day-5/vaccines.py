@@ -63,6 +63,7 @@ class Queue():
     def get_next_blood_type(self, blood_type):
         # Returns the first human with this specific blood type.
         # Every human returned by get_next and get_next_blood_type is removed from the list.
+        # result = filter(lambda human :(human.blood_type == blood_type), self.humans)
         for human in self.humans:
             if human.blood_type == blood_type:
                 temp = human
