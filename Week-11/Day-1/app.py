@@ -9,17 +9,18 @@ def index():
 @app.route('/blog/articles')
 def index1():
     html = '''
-<html>
-    <head>
-        <title>Home Page - Microblog</title>
-    </head>
-    <body>
-        <h1>Hello!</h1>
-    </body>
-</html>'''
+        <html>
+            <head>
+                <title>Home Page - Microblog</title>
+            </head>
+            <body>
+                <h1>Hello!</h1>
+            </body>
+        </html>'''
 
     return html
 
 
 if __name__ == "__main__":
     app.run(debug=True,port=5000)
+
