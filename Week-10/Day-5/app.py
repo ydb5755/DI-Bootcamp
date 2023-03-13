@@ -2,10 +2,24 @@ import flask
 
 app = flask.Flask(__name__)
 
-@app.rout('/')
+@app.route('/blog')
 def index():
-    return 'Hello'
+    return 'Welcome to my blog!'
 
-@app.rout('/<username>')
-def index1(username):
-    return f'Hello {username}'
+@app.route('/blog/articles')
+def index1():
+    html = '''
+<html>
+    <head>
+        <title>Home Page - Microblog</title>
+    </head>
+    <body>
+        <h1>Hello!</h1>
+    </body>
+</html>'''
+
+    return html
+
+
+if __name__ == "__main__":
+    app.run(debug=True,port=5000)
