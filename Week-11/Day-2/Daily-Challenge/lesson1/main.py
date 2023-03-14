@@ -1,4 +1,5 @@
 import flask
+import markdown
 
 app = flask.Flask(__name__)
 
@@ -8,16 +9,16 @@ def homepage():
 
 @app.route('/lesson1')
 def lesson():
-    with open('./md-files/in-this-chapter.md') as f:
+    with open('Week-11\Day-2\Daily-Challenge\lesson1\md-files\in-this-chapter.md') as f:
         md = f.read()
-    html = flask.render_template('lesson.html', lesson_page=md)
+    html = markdown.markdown(md)
     return html
 
 @app.route('/exercise')
 def exercise():
-    with open('./md-files/exercises.md') as f:
+    with open('Week-11\Day-2\Daily-Challenge\lesson1\md-files\exercises.md') as f:
         md = f.read()
-    html = flask.render_template('exercises.html', exercise_page=md)
+    html = markdown.markdown(md)
     return html
 
 if __name__ == '__main__':
