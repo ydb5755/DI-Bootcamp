@@ -12,14 +12,15 @@
     {% for item in data %}
         <div class="card">
             <div class="card-header">
-            Featured
+                {{ item.Name }}
             </div>
             <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">{{ item.Description }}</h5>
+            <p class="card-text">${{ item.Price }}</p>
+            <a href="{{ url_for('product_details', product_id=item.ProductId) }}" class="btn btn-primary">Item Details</a>
             </div>
         </div>
+        <br>
       {% endfor %}
     {% endblock %}
 </body>

@@ -33,11 +33,11 @@ def homepage():
     return flask.render_template('homepage.html')
 
 @app.route('/products')
-def products(data):
-    return flask.render_template('products.html', data=data)
+def products():
+    return flask.render_template('products.html', data=data_load())
 
 @app.route('/product/<product_id>')
 def product_details(product_id):
-    return flask.render_template('product-details.html', product_id=product_id)
+    return flask.render_template('product-details.html', product_id=product_id, data=data_load())
 
 app.run(debug=True)

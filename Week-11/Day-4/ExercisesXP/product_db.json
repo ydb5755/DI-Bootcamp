@@ -11,7 +11,7 @@
         "Name": "Notebook Basic 15",
         "ProductPicUrl": "test-resources/sap/ui/demokit/explored/img/HT-1000.jpg",
         "Status": "Available",
-        "Quantity": 10,
+        "Quantity": 0,
         "UoM": "PC",
         "CurrencyCode": "EUR",
         "Price": 956,

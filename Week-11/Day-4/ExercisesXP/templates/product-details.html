@@ -8,6 +8,37 @@
 </head>
 <body>
     {% extends 'homepage.html'%}
-    Product id= {{ product_id }}
+    {% block body %}
+        {% for item in data %}
+            {% if item.ProductId == product_id %}
+            <div class="container" id="head_of_page">
+                <h1>{{ item.Name }}</h1>
+                {% if item.Quantity > 0 %}
+                    <div>
+                        <p>This item is available!</p>
+                    </div>
+                {% else %}
+                <div>
+                    <p>This item is not available at the moment</p>
+                </div>
+                {% endif %}
+            </div>
+            <div class="container">
+                <h1 class="bg-light">Product Details</h1>
+            {% for key_value in item %}
+                <div class="row">
+                    <div class="col-2">
+                        <div class="bg-light">{{ key_value }}</div>
+                    </div>
+                    <div class="col-10">
+                        <div class="bg-light">{{ item[key_value] }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {% endblock %}
 </body>
 </html>
