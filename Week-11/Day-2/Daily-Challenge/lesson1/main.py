@@ -11,7 +11,7 @@ def homepage():
 def lesson():
     with open('Week-11\Day-2\Daily-Challenge\lesson1\md-files\in-this-chapter.md') as f:
         md = f.read()
-    html = markdown.markdown(md)
+    html = markdown.markdown(md) # there is no need for a new variable you can just do return markdown.markdown(md)
     return html
 
 @app.route('/exercise')
