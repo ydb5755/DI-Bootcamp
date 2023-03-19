@@ -3,7 +3,7 @@ import json
 
 
 def retrieve_all_products():
-    with open('Week-11\Day-5\products.json') as f:
+    with open('Week-11/Day-5/products.json') as f:
         all_products = json.load(f)
         return all_products
 

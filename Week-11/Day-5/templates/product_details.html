@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+</head>
+<body>
+    {% extends 'base.html'%}
+    {% block body %}
+    <div class="container" id="head_of_page">
+        <h1>{{ product_id.Name }}</h1>
+        {% if product_id.Quantity > 0 %}
+            <div>
+                <p>This item is available!</p>
+                <a href="{{ url_for('add_product', product_id=product_id.ProductId) }}" class="btn btn-primary">Add To Cart</a>
+            </div>
+        {% else %}
+        <div>
+            <p>This item is not available at the moment</p>
+        </div>
+        {% endif %}
+    </div>
+    <div class="container">
+        <h1 class="bg-light">Product Details</h1>
+    {% for key_value in product_id %}
+        <div class="row">
+            <div class="col-2">
+                <div class="bg-light">{{ key_value }}</div>
+            </div>
+            <div class="col-10">
+                <div class="bg-light">{{ product_id[key_value] }}</div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block body %}
+    <div>
+        <h3>
+            Total Cost: ${{total}}
+        </h3>
+    </div>
+    {% for item in cart_item %}
+    <div class="card">
+        <div class="card-header">
+            <h1>{{ item.Name }}</h1>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ item.Description }}</h5>
+            <p class="card-text">${{ item.Price }}</p>
+            <a href="{{ url_for('remove_product', product_id=item.ProductId) }}" class="btn btn-primary">Remove from cart</a>
+        </div>
+    </div>
+    <br>
+    {% endfor %}
+    {% endblock %}
+</body>
+</html>
