@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block body %}
+{% for pokemon in all['results'] %}
+    <p>{{ pokemon['name'] }}</p>
+{% endfor %}
+<a href="{{next}}">Next</a>
+<a href="{{previous}}">Previous</a>
+{% endblock %}
