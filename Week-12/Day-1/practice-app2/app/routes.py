@@ -1,6 +1,8 @@
 import flask
 from app import app
 from app.forms import Form
+
+
 @app.route('/', methods=('GET', 'POST'))
 def home():
     form = Form()
