@@ -10,25 +10,25 @@
     <form method="POST">
         {{ form.hidden_tag() }}
         
-        {{ form.cityName.label }}
+        {{ form.cityName.label }}{% if field.flags.required %}*{% endif %}
         {{ form.cityName() }}
 
-        {{ form.cityCountry.label }}
+        {{ form.cityCountry.label }}{% if field.flags.required %}*{% endif %}
         {{ form.cityCountry() }}
         
-        {{ form.inhabitants.label }}
+        {{ form.inhabitants.label }}{% if field.flags.required %}*{% endif %}
         {{ form.inhabitants() }}
         
-        {{ form.cityArea.label }}
+        {{ form.cityArea.label }}{% if field.flags.required %}*{% endif %}
         {{ form.cityArea() }}
         
-        {{ form.latitude.label }}
+        {{ form.latitude.label }}{% if field.flags.required %}*{% endif %}
         {{ form.latitude() }}
         
-        {{ form.longitude.label }}
+        {{ form.longitude.label }}{% if field.flags.required %}*{% endif %}
         {{ form.longitude() }}
         
-        {{ form.capital.label }}
+        {{ form.capital.label }}{% if field.flags.required %}*{% endif %}
         {{ form.capital() }}
         
         {{ form.submit() }}
