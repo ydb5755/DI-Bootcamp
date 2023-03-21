@@ -10,25 +10,25 @@
     <form method="POST">
         {{ form.hidden_tag() }}
         
-        {{ form.cityName.label }}{% if field.flags.required %}*{% endif %}
+        {{ form.cityName.label }}{% if form.cityName.flags.required %}*{% endif %}
         {{ form.cityName() }}
 
-        {{ form.cityCountry.label }}{% if field.flags.required %}*{% endif %}
+        {{ form.cityCountry.label }}{% if form.cityCountry.flags.required %}*{% endif %}
         {{ form.cityCountry() }}
         
-        {{ form.inhabitants.label }}{% if field.flags.required %}*{% endif %}
+        {{ form.inhabitants.label }}{% if form.inhabitants.flags.required %}*{% endif %}
         {{ form.inhabitants() }}
         
-        {{ form.cityArea.label }}{% if field.flags.required %}*{% endif %}
+        {{ form.cityArea.label }}{% if form.cityArea.flags.required %}*{% endif %}
         {{ form.cityArea() }}
         
-        {{ form.latitude.label }}{% if field.flags.required %}*{% endif %}
+        {{ form.latitude.label }}{% if form.latitude.flags.required %}*{% endif %}
         {{ form.latitude() }}
         
-        {{ form.longitude.label }}{% if field.flags.required %}*{% endif %}
+        {{ form.longitude.label }}{% if form.longitude.flags.required %}*{% endif %}
         {{ form.longitude() }}
         
-        {{ form.capital.label }}{% if field.flags.required %}*{% endif %}
+        {{ form.capital.label }}{% if form.capital.flags.required %}*{% endif %}
         {{ form.capital() }}
         
         {{ form.submit() }}
