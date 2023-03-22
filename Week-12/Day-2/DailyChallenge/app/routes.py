@@ -13,7 +13,6 @@ def home():
         lastName    = form.lastName.data
         age         = form.age.data
         experience  = form.experience.data
-        form = MakeCV(formdata=None)
         data = {
             'firstName':firstName,
             'lastName':lastName,
@@ -22,4 +21,3 @@ def home():
         }
         return flask.render_template('userCV.html', data=data)
     return flask.render_template('index.html', form=form)
-
