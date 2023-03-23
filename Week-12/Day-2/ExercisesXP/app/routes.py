@@ -17,7 +17,7 @@ def home():
         latitude    = form.latitude.data
         longitude   = form.longitude.data
         capital     = form.capital.data
-        form = AddCity(formdata=None)
+        form = AddCity(formdata=None) # it's redundant, please remove it
         data = {
             'name':name,
             'country':country,
