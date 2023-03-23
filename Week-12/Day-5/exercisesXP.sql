@@ -1,0 +1,15 @@
+-- SELECT * FROM public.customer;
+-- SELECT first_name || ' ' || last_name AS full_name FROM customer ;
+-- SELECT DISTINCT create_date FROM customer ;
+-- SELECT * FROM customer ORDER BY first_name DESC;
+-- SELECT film_id, title, description, release_year, rental_rate FROM film ORDER BY rental_rate ASC;
+-- SELECT address, phone FROM address WHERE district IN ('Texas');
+-- SELECT * FROM film WHERE film_id = 15 OR film_id = 150;
+-- SELECT film_id, title, description, length, rental_rate FROM film WHERE title = 'Smurfs';
+-- SELECT film_id, title, description, length, rental_rate FROM film WHERE title LIKE 'Sm%';
+-- SELECT title, rental_rate FROM film ORDER BY rental_rate ASC LIMIT 10
+-- SELECT title, rental_rate FROM film ORDER BY rental_rate ASC OFFSET 10 FETCH FIRST 10 ROW ONLY;
+-- SELECT first_name, last_name, amount, payment_date FROM customer INNER JOIN payment USING(customer_id) ORDER BY customer_id ASC;
+-- SELECT title FROM film WHERE NOT EXISTS(SELECT 1 FROM inventory WHERE film.film_id = inventory.film_id) ;
+-- SELECT city, country FROM city INNER JOIN country USING (country_id);
+-- SELECT customer_id, first_name, last_name, amount, payment_date, staff_id FROM customer INNER JOIN payment USING(customer_id) ORDER BY staff_id;

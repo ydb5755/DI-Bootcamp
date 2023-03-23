@@ -1,5 +1,22 @@
 {
   "list of cities": [
-    
+    {
+      "name": "Brooklyn",
+      "country": "USA",
+      "inhabitants": 1,
+      "cityArea": 1,
+      "latitude": 1,
+      "longitude": 1,
+      "capital": true
+    },
+    {
+      "name": "LA",
+      "country": "1",
+      "inhabitants": 2,
+      "cityArea": 5,
+      "latitude": 6,
+      "longitude": 44,
+      "capital": false
+    }
   ]
 }

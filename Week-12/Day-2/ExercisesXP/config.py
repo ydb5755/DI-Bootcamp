@@ -1,9 +1,3 @@
-from random import choice
-from string import ascii_letters
-
-key = ''
-for i in range(256):
-    key += choice(ascii_letters)
-
+import secrets
 class Config:
-    SECRET_KEY = key
+    SECRET_KEY = secrets.token_hex(16)
