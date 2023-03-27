@@ -1,8 +1,8 @@
-from app import robots
+from app import db
 
-class User(robots.Model):
-    id       = robots.Column(robots.Integer, primary_key=True)
-    name     = robots.Column(robots.String(64))
-    street   = robots.Column(robots.String(64))
-    city     = robots.Column(robots.String(64))
-    zipcode  = robots.Column(robots.String(64))
+class User(db.Model):
+    id       = db.Column(db.Integer, primary_key=True)
+    name     = db.Column(db.String(64))
+    street   = db.Column(db.String(64))
+    city     = db.Column(db.String(64))
+    zipcode  = db.Column(db.String(64))
