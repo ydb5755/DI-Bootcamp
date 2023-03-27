@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}" />
+</head>
+<body>
+    Hello World
+    <br>
+
+    {% for category, message in get_flashed_messages(with_categories=True) %}
+        <div class="alert-{{category}}">message</div>
+        <br>
+    {% endfor %}
+</body>
+</html>
