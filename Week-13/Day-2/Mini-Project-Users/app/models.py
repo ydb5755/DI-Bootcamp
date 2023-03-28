@@ -6,3 +6,6 @@ class User(db.Model):
     street   = db.Column(db.String(64))
     city     = db.Column(db.String(64))
     zipcode  = db.Column(db.String(64))
+
+    def __repr__(self):
+        return f'User (id-{self.id}, name-{self.name}, street-{self.street}, city-{self.city}, zipcode-{self.zipcode})'

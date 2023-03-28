@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data</title>
+</head>
+<body>
+    
+    <h1>Heres the data!</h1>
+    {% for person in my_file %}
+    <div>
+        {{person}}
+    </div>
+    {% endfor %}
+    <br/>
+    {% for person in my_file %}
+        {% if person.city == 'Roscoeview' %}
+            <div>
+                Hi my name is {{ person.name }} and i live in {{ person.city }}!!
+            </div>
+        {% endif %}
+    {% endfor %}
+    <br/>
+    <br/>
+    {% for person in first_five %}
+    <div>
+        {{person}}
+    </div>
+    {% endfor %}
+    <br/>
+    <br/>
+    {% for person in zipcode_5 %}
+        <div>
+            {{person}}
+        </div>
+    {% endfor %}
+
+    <a href="{{url_for('add_user')}}">Want to add another user?</a>
+
+</body>
+</html>

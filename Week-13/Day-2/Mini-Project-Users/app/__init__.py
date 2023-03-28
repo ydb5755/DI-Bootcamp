@@ -11,7 +11,7 @@ app.config['SECRET_KEY']='123456'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-from app import models 
+from app import models, routes
 
 
 # user = models.User(id=0, name='Yisroel Baum', street='NY ave', city='Brooklyn', zipcode=11210)
