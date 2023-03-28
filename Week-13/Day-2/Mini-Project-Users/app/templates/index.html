@@ -38,6 +38,14 @@
     {% endfor %}
 
     <a href="{{url_for('add_user')}}">Want to add another user?</a>
+    <br/>
+
+    {% if current_user.is_authenticated %}
+        <p>You're logged in!</p>
+        <a href="{{url_for('logout')}}">Want to logout?</a>
+    {% else %}
+        <a href="{{url_for('login')}}">Want to login?</a>
+    {% endif %}
 
 </body>
 </html>

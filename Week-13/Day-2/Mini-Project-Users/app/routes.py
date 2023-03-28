@@ -1,9 +1,10 @@
 from app import app, db
 from app.models import User
-from flask import render_template, request, redirect, url_for
-from app.forms import UserForm
+from flask import render_template, request, redirect, url_for, flash, abort
+from app.forms import UserForm, LoginForm
 import json
 import requests
+from flask_login import login_user, logout_user, current_user, login_required
 
 # @app.route('/', methods=("GET", "POST"))
 # def home():
@@ -42,6 +43,28 @@ def add_user():
         db.session.commit()
         return redirect(url_for('index'))
     return render_template('add_user.html', form=form)
+
+@app.route('/login', methods=('GET', 'POST'))
+def login():
+    # if current_user.is_authenticated:
+    #     redirect(url_for('index'))
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(name=form.name.data).first()
+        if user.city == form.city.data:
+            login_user(user)
+            flash('You have logged in!') 
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('index'))
+        else:
+            flash('No user matches these credentials')
+            return redirect(url_for('add_user'))
+    return render_template('login.html', form=form)
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 # @app.route('/populate')
 # def populate():
