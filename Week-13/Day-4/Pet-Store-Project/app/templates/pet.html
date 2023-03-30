@@ -15,7 +15,7 @@
             <p>I was born on {{ pet.date_of_birth }}</p>
             <p>It's been said that I'm a... {{ pet.details }}!</p>
             <p>The asking price for me is ${{ pet.price }}, which is like, such a steal!</p>
-            <button class="btn btn-primary" href="{{url_for('add_pet', pet_id=pet.id)}}">Add to cart</button>
+            <a class="btn btn-primary" href="{{url_for('add_pet', pet_id=pet.id)}}">Add to cart</a>
         </div>
     </main>
 {% endblock content %}
