@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% block content %}
+    <main>
+        {% for pet in all_pets %}
+            <div class="card text-center" style="width: auto; height: auto;">
+                <img src="{{pet.image}}" class="card-img-top" alt="..." style="width: 25rem; height: 35rem;">
+                <div class="card-body">
+                <a href="{{url_for('individual_pet', pet_id=pet.id)}}" class="btn btn-primary">Click here to see more about {{ pet.name }}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </main>
+{% endblock content %}

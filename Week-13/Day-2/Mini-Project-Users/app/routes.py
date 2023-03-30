@@ -72,6 +72,6 @@ def logout():
 #     for person in jfile:
 #         user = User(name=person.get('name'), street=person.get('address').get('street'), city=person.get('address').get('city'), zipcode=person.get('address').get('zipcode'))
 #         db.session.add(user)
-#         db.session.commit()
+#     db.session.commit()
 
 #     return render_template('index.html')

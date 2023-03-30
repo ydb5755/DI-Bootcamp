@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% block content %}
+    <main>
+        <div>
+            <img src="{{pet.image}}" alt="..." style="width:15rem; height:20rem">
+        </div>
+        <div>
+            <h1>My name is {{pet.name}}</h1>
+            {% if pet.gender == 'M' %}
+                <p>I am a boy!</p>
+            {% else %}
+                <p>I am a girl!</p>
+            {% endif %}
+            <p>I come from a long line of {{ pet.breed }}'s</p>
+            <p>I was born on {{ pet.date_of_birth }}</p>
+            <p>It's been said that I'm a... {{ pet.details }}!</p>
+            <p>The asking price for me is ${{ pet.price }}, which is like, such a steal!</p>
+            <button class="btn btn-primary" href="{{url_for('add_pet', pet_id=pet.id)}}">Add to cart</button>
+        </div>
+    </main>
+{% endblock content %}
