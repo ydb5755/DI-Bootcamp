@@ -11,7 +11,7 @@ class AnagramChecker():
         for i in self.local_list:
             if i == word:
                 return True
-        else:
+        else: # the else is redundant remove it
             return False
 
     def get_anagrams(self, input):
