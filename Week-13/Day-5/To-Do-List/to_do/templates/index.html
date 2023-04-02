@@ -13,6 +13,9 @@
     
             {{ form.task.label }}
             {{ form.task() }}
+
+            {{ form.image.label }}
+            {{ form.image() }}
     
             {{ form.submit() }}
         </form>
@@ -25,6 +28,9 @@
                     {% else %}
                         <li>
                             {{ task.details }}
+                            <div>
+                                <img src="{{ task.image.url }}" style="width:15rem; height: 15rem;">
+                            </div>
                             <form action="{{url_for('complete', todo_id=task.id)}}">
                                 <button type="submit">Completed</button>
                             </form>
