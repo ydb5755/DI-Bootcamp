@@ -10,7 +10,9 @@
     {{user.name}}<br>
     {{user.email}}<br>
     {{user.address}}<br>
-    {{user.phone_numbers[0].number}}
-
+    {{user.phone_numbers[0].number}}<br>
+    {% for nation in user.nationalities %}
+        {{nation.name}}
+    {% endfor %}
 </body>
 </html>

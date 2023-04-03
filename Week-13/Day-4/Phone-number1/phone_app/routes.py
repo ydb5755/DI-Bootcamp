@@ -20,3 +20,8 @@ def by_name(name):
         return render_template('name.html', user=user)
     else:
         return 'No results found'
+    
+@app.route('/people/<nationality>')
+def people_of_a_nation(nationality):
+    nation = models.Nationalities.query.filter_by(name=nationality).first()
+    return render_template('people_of_a_nation.html', nation=nation)
