@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Shoot me a message and lets talk!</h1>
+    </div>
+
+    <form>
+        {{message_form.hidden_tag()}}
+
+        {{ message_form.name.label }}
+        {{ message_form.name() }}
+
+        {{ message_form.email.label }}
+        {{ message_form.email() }}
+        
+        {{ message_form.subject.label }}
+        {{ message_form.subject() }}
+        
+        {{ message_form.message.label }}
+        {{ message_form.message() }}
+
+
+        {{ message_form.submit() }}
+        
+    </form>
+{% endblock content %}

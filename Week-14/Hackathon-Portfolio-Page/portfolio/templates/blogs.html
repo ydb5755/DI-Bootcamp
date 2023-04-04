@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Blogs{% endblock %}
+
+{% block content %}
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+<form>
+    <h2>Sign up for one of the blogs by filling out your info below!</h2>
+    {{blog_form.hidden_tag()}}
+
+    {{ blog_form.name.label }}
+    {{ blog_form.name() }}
+
+    {{ blog_form.email.label }}
+    {{ blog_form.email() }}
+    
+    {{ blog_form.blog.label }}
+    {{ blog_form.blog() }}
+
+    {{ blog_form.submit() }}
+    
+</form>
+{% endblock content %}
