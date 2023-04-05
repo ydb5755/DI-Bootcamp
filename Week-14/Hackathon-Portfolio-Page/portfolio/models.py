@@ -31,8 +31,16 @@ class Blog(portfolio.Model):
     description = portfolio.Column(portfolio.String(200), nullable=False)
     img         = portfolio.Column(portfolio.String(200), default='static/default_pic.jpg')
 
+    def save_blog(self):
+        portfolio.session.add(self)
+        portfolio.session.commit()
+
 class Projects(portfolio.Model):
     id          = portfolio.Column(portfolio.Integer, primary_key=True)
     name        = portfolio.Column(portfolio.String(64), nullable=False)
     description = portfolio.Column(portfolio.String(200), nullable=False)
     url         = portfolio.Column(portfolio.String(64), nullable=False)
+
+    def save_project(self):
+        portfolio.session.add(self)
+        portfolio.session.commit()

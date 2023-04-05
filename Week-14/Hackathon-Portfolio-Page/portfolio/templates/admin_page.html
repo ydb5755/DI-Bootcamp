@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Admin Priviliges{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Create or remove a blog</h1>
+        <p> Heres a list of your current blogs by name</p>
+        <ul>
+            {% for blog in all_blogs %}
+            <li>{{ blog.name }}</li>
+            {% endfor %}
+        </ul>
+        <form method="post" action="" enctype="multipart/form-data">
+            {{blog_action.hidden_tag()}}
+    
+            {{ blog_action.name.label }}
+            {{ blog_action.name() }}
+    
+            {{ blog_action.description.label }}
+            {{ blog_action.description() }}
+            
+            {{ blog_action.img.label }}
+            {{ blog_action.img() }}
+            
+            {{ blog_action.action.label }}
+            {{ blog_action.action() }}
+    
+    
+            {{ blog_action.submit() }}
+            
+        </form>
+    
+        <h1>Create or remove a project</h1>
+        <p> Heres a list of your current projects by name</p>
+        <ul>
+            {% for project in all_projects %}
+            <li>{{ project.name }}</li>
+            {% endfor %}
+        </ul>
+        <form method="post" action="" enctype="multipart/form-data">
+            {{project_action.hidden_tag()}}
+    
+            {{ project_action.name.label }}
+            {{ project_action.name() }}
+    
+            {{ project_action.description.label }}
+            {{ project_action.description() }}
+            
+            {{ project_action.url.label }}
+            {{ project_action.url() }}
+            
+            {{ project_action.action.label }}
+            {{ project_action.action() }}
+    
+    
+            {{ project_action.submit() }}
+            
+        </form>
+    </div>
+    
+
+{% endblock content %}
