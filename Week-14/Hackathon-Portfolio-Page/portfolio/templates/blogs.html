@@ -2,14 +2,16 @@
 {% block title %}Blogs{% endblock %}
 
 {% block content %}
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+{% for blog in all_blogs %}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ blog.img }}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ blog.name }}</h5>
+            <p class="card-text">{{ blog.description }}</p>
+            <a href="{{url_for('ind_blog', blog_id=blog.id)}}" class="btn btn-primary">Go somewhere</a>
+        </div>
     </div>
-</div>
+{% endfor %}
 <form method="post" action="" enctype="multipart/form-data">
     <h2>Sign up for one of the blogs by filling out your info below!</h2>
     {{blog_form.hidden_tag()}}

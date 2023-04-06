@@ -6,7 +6,15 @@
         <p> Heres a list of your current blogs by name</p>
         <ul>
             {% for blog in all_blogs %}
-            <li>{{ blog.name }}</li>
+                <li>{{ blog.name }}</li>
+                {% if blog.followers %}
+                    <h3>List of followers</h3>
+                    <ul>
+                        {% for follower in blog.followers %}
+                            {{ follower.email }}<br>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             {% endfor %}
         </ul>
         <form method="post" action="" enctype="multipart/form-data">
@@ -33,7 +41,7 @@
         <p> Heres a list of your current projects by name</p>
         <ul>
             {% for project in all_projects %}
-            <li>{{ project.name }}</li>
+                <li>{{ project.name }}</li>
             {% endfor %}
         </ul>
         <form method="post" action="" enctype="multipart/form-data">
@@ -55,6 +63,19 @@
             {{ project_action.submit() }}
             
         </form>
+        <h1>All messages</h1>
+        <ul>
+            {% for message in all_messages %}
+                <li>
+                    <p>{{ message.user.name }}</p>
+                    <ul>
+                        <li>{{ message.user.email }}</li>
+                        <li>{{ message.text }}</li>
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+        
     </div>
     
 

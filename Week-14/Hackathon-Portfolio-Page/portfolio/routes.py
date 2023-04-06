@@ -13,11 +13,13 @@ def about():
 
 @app.route('/projects')
 def projects():
-    return render_template('projects.html')
+    projects = Projects.query.all()
+    return render_template('projects.html', projects=projects)
 
 @app.route('/blogs', methods=('GET', 'POST'))
 def blogs():
     blog_form = BlogSignUpForm()
+    all_blogs = Blog.query.all()
     blog = Blog.query.filter_by(name=blog_form.blog.data).first()
     user = User.query.filter_by(email=blog_form.email.data).first()
     if blog_form.validate_on_submit():
@@ -30,7 +32,7 @@ def blogs():
             user.save_user()
         flash(f"You've been signed up for the {blog.name} blog!")
         redirect(url_for('landing_page'))
-    return render_template('blogs.html', blog_form=blog_form)
+    return render_template('blogs.html', blog_form=blog_form, all_blogs=all_blogs)
 
 @app.route('/blog/<int:blog_id>')
 def ind_blog(blog_id):
@@ -44,7 +46,7 @@ def contact():
     if message_form.validate_on_submit():
         if message_form.name.data == 'Yisroel' and message_form.email.data == 'yisroel.d.baum@gmail.com' and message_form.message.data == 'Yes this is a secret login':
             return redirect(url_for('admin'))
-        user = User.query.filter_by(email=message_form.email).first()
+        user = User.query.filter_by(email=message_form.email.data).first()
         if user:
             message_to_send = Message(text=message_form.message.data, user=user)
             message_to_send.save_message()
@@ -56,14 +58,37 @@ def contact():
         return redirect(url_for('contact_confirmation'))
     return render_template('contact.html', message_form=message_form)
 
+@app.route('/contact_confirmation')
+def contact_confirmation():
+    return render_template('contact_confirmation.html')
+
 
 @app.route('/admin', methods=('GET', 'POST'))
 def admin():
-    all_blogs = Blog.query.all()
-    all_projects = Projects.query.all()
 
     blog_action = CreateOrRemoveBlogForm()
     project_action = CreateOrRemoveProjectForm()
+    if project_action.validate_on_submit():
+        if project_action.action.data == 'Create':
+            search_project = Projects.query.filter_by(name=project_action.name.data).first()
+            if search_project:
+                flash('A project with that name already exists!')
+                return redirect(url_for('admin'))
+            else:
+                project = Projects(name=project_action.name.data, description=project_action.description.data, url=project_action.url.data)
+                project.save_project()
+                flash('Project created!')
+                return redirect(url_for('admin'))
+        else:
+            del_project = Projects.query.filter_by(name=project_action.name.data).first()
+            if del_project:
+                portfolio.session.delete(del_project)
+                portfolio.session.commit()
+                return redirect(url_for('admin'))
+            else:
+                flash('That project doesnt exist')
+                return redirect(url_for('admin'))
+            
     if blog_action.validate_on_submit():
         if blog_action.action.data == 'Create':
             search_blog = Blog.query.filter_by(name=blog_action.name.data).first()
@@ -86,26 +111,16 @@ def admin():
                 flash('That blog name doesnt exist')
                 return redirect(url_for('admin'))
     
-    if project_action.validate_on_submit():
-        if project_action.action.data == 'Create':
-            search_project = Projects.query.filter_by(name=project_action.name.data).first()
-            if search_project:
-                flash('A project with that name already exists!')
-                return redirect(url_for('admin'))
-            else:
-                project = Projects(name=project_action.name.data, description=project_action.description.data, url=project_action.url.data)
-                project.save_project()
-                flash('Project created!')
-                return redirect(url_for('admin'))
-
-        else:
-            del_project = Projects.query.filter_by(name=project_action.name.data).first()
-            if del_project:
-                portfolio.session.delete(del_project)
-                portfolio.session.commit()
-                return redirect(url_for('admin'))
-            else:
-                flash('That project doesnt exist')
-                return redirect(url_for('admin'))
+    
+        
+    all_blogs = Blog.query.all()
+    all_projects = Projects.query.all()
+    all_messages = Message.query.all()
            
-    return render_template('admin_page.html', blog_action=blog_action, project_action=project_action, all_blogs=all_blogs, all_projects=all_projects)
+    return render_template('admin_page.html', 
+                           blog_action=blog_action, 
+                           project_action=project_action, 
+                           all_blogs=all_blogs, 
+                           all_projects=all_projects,
+                           all_messages=all_messages
+                           )
