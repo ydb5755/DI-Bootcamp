@@ -1,0 +1,34 @@
+{% extends 'partials/base.html' %}
+{% include 'partials/navbar.html' %}
+{% block title %}Add Film{% endblock title %}
+{% block content %}
+    <main>
+        <div>
+            <h1>Add a film</h1>
+            <form method="post" action="" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+
+                {{ form.title.label }}
+                {{ form.title() }}<br/>
+                
+                {{ form.release_date.label }}
+                {{ form.release_date() }}<br/>
+                
+                {{ form.created_in_country.label }}
+                {{ form.created_in_country() }}<br/>
+                
+                {{ form.available_in_countries.label }}
+                {{ form.available_in_countries() }}<br/>
+
+                {{ form.categories.label }}
+                {{ form.categories() }}<br/>
+
+                {{ form.director.label }}
+                {{ form.director() }}<br/>
+                
+                
+                {{ form.submit() }}
+            </form> 
+        </div>
+    </main>
+{% endblock content %}

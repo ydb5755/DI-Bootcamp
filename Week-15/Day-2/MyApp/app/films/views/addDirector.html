@@ -1,0 +1,18 @@
+{% extends 'partials/base.html' %}
+{% include 'partials/navbar.html' %}
+{% block title %}Add Director{% endblock title %}
+{% block content %}
+    <main>
+        <div>
+            <h1>Add a director</h1>
+            <form method="post" action="" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+
+                {{ form.name.label }}
+                {{ form.name() }}
+                
+                {{ form.submit() }}
+            </form> 
+        </div>
+    </main>
+{% endblock content %}
