@@ -1,5 +1,4 @@
 {% extends 'partials/base.html' %}
-{% include 'partials/navbar.html' %}
 
 {% block title %}Homepage{% endblock title %}
 {% block content %}
@@ -7,12 +6,14 @@
         {% for film in films %}
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">{{ film.title }} By {{ film.director }}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Date: {{ film.release_date }}</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <br/>
-              <a href="#" class="card-link">Another link</a>
+            <h5 class="card-title">{{ film.title }} By {% for d in film.director %}{{ d.first_name }} {{ d.last_name }}{% if loop.index < film.director|length %} and {% endif %}{% endfor %}
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted">Date: {{ film.release_date.strftime('%d-%m-%Y') }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Category: {% for c in film.category %}{{ c.name }}{% if loop.index < film.category|length %} - {% endif %}{% endfor %}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Country: {{ film.country.name }}</h6>
+            <a href="#" class="card-link">Card link</a>
+            <br/>
+            <a href="#" class="card-link">Another link</a>
             </div>
           </div>
         {% endfor %}

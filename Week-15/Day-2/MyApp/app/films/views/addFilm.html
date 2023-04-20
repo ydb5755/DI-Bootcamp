@@ -1,31 +1,26 @@
 {% extends 'partials/base.html' %}
-{% include 'partials/navbar.html' %}
 {% block title %}Add Film{% endblock title %}
 {% block content %}
     <main>
         <div>
             <h1>Add a film</h1>
             <form method="post" action="" enctype="multipart/form-data">
-                {{ form.hidden_tag() }}
+                {{ film_form.hidden_tag() }}
 
-                {{ form.title.label }}
-                {{ form.title() }}<br/>
+                {{ film_form.title.label }}
+                {{ film_form.title() }}<br/>
                 
-                {{ form.release_date.label }}
-                {{ form.release_date() }}<br/>
-                
-                {{ form.created_in_country.label }}
-                {{ form.created_in_country() }}<br/>
-                
+                {{ film_form.release_date.label }}
+                {{ film_form.release_date() }}<br/>
 
-                {{ form.categories.label }}
-                {{ form.categories() }}<br/>
-
-                {{ form.director.label }}
-                {{ form.director() }}<br/>
+                {{ film_form.categories.label }}
+                {{ film_form.categories() }}<br/>
+                
+                {{ film_form.created_in_country.label }}
+                {{ film_form.created_in_country() }}<br/>
                 
                 
-                {{ form.submit() }}
+                {{ film_form.submit() }}
             </form> 
         </div>
     </main>

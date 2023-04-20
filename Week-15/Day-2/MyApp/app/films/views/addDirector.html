@@ -1,5 +1,4 @@
 {% extends 'partials/base.html' %}
-{% include 'partials/navbar.html' %}
 {% block title %}Add Director{% endblock title %}
 {% block content %}
     <main>
@@ -8,8 +7,14 @@
             <form method="post" action="" enctype="multipart/form-data">
                 {{ form.hidden_tag() }}
 
-                {{ form.name.label }}
-                {{ form.name() }}
+                {{ form.first_name.label }}
+                {{ form.first_name() }}<br/>
+
+                {{ form.last_name.label }}
+                {{ form.last_name() }}<br/>
+
+                {{ form.film.label }}
+                {{ form.film() }}<br/>
                 
                 {{ form.submit() }}
             </form> 

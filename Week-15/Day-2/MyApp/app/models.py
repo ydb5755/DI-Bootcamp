@@ -53,8 +53,11 @@ class Film(db.Model):
 
 class Director(db.Model):
     id   = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), unique=True, nullable=False)
+    first_name = db.Column(db.String(64), nullable=False)
+    last_name  = db.Column(db.String(64), nullable=False)
     
     def save_director(self):
         db.session.add(self)
         db.session.commit()
+
+
