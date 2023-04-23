@@ -1,27 +1,43 @@
 import os
-from flask import Flask
+from flask import Flask, url_for, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_login import LoginManager
 
-app = Flask(__name__)
+db = SQLAlchemy()
+migrate = Migrate()
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'portfolio.db')
-app.config['SECRET_KEY'] = '123456'
+def create_app():
+    app = Flask(__name__)
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'portfolio.db')
+    app.config['SECRET_KEY'] = '123456'
 
-db = SQLAlchemy(app)
-migrate = Migrate(app,db)
+    db.init_app(app)
+    migrate.init_app(app,db)
+    login_manager = LoginManager(app)
 
-from app.accounts import accounts_bp
-from app.films import films_bp
+    # login_manager.init_app(app)
+    login_manager.login_view = "accounts.login"  # type: ignore
+    # @login_manager.login_view
+    # def login():
+    #     # Render the login template.
+    #     return render_template('login.html')
+    from .models import User
 
-app.register_blueprint(accounts_bp, url_prefix="/accounts")
-app.register_blueprint(films_bp, url_prefix="/films")
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(int(user_id))
+    
+    from app.accounts import accounts_bp
+    from app.films import films_bp
 
+    app.register_blueprint(accounts_bp, url_prefix="/accounts")
+    app.register_blueprint(films_bp, url_prefix="/films")
+    return app
 
 from app.models import Category
 def populate_categories():
-    with app.app_context():
         action          = Category(name='Action')
         comedy          = Category(name='Comedy')
         science_fiction = Category(name='Science-Fiction')

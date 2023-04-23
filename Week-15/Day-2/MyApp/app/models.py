@@ -1,5 +1,6 @@
 from app import db
 from datetime import datetime
+from flask_login import UserMixin
 
 
 countries_films = db.Table('countries_films',
@@ -61,7 +62,7 @@ class Director(db.Model):
         db.session.add(self)
         db.session.commit()
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     id   = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(64), nullable=False)
     last_name = db.Column(db.String(64), nullable=False)

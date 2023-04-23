@@ -2,7 +2,6 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, DateField, SelectField, SelectMultipleField, FormField, PasswordField
 from wtforms.validators import DataRequired, StopValidation, EqualTo
 from wtforms import widgets
-from app import app
 
 
 class SignUpForm(FlaskForm):

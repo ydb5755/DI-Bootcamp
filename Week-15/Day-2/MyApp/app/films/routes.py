@@ -1,11 +1,11 @@
 from flask import render_template, redirect, url_for
-from app import app, db
+from app import db
 from app.films import films_bp
 from app.films.forms import AddDirectorForm, AddFilmForm, UpdateDirectorForm
 from app.models import Film, Director, Country, Category
 
 
-@app.route('/')
+
 @films_bp.route("/homepage")
 def homepage():
     films = Film.query.all()
@@ -14,7 +14,7 @@ def homepage():
 @films_bp.route('/addFilm', methods=('GET', 'POST'))
 def addFilm():
     film_form = AddFilmForm()
-
+    film_form.categories.choices = [cat.name for cat in Category.query.all()]
     if film_form.validate_on_submit():
         country_to_add_to = Country.query.filter_by(name=film_form.created_in_country.data).first()
         if not country_to_add_to:

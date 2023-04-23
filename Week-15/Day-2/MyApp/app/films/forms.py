@@ -2,11 +2,11 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, DateField, SelectField, SelectMultipleField, FormField
 from wtforms.validators import DataRequired, StopValidation
 from wtforms import widgets
-from app import app
+from flask import current_app
 from app.models import Country, Film, Category, Director
 
-with app.app_context():
-    all_categories  = Category.query.all()
+# with current_app.app_context():
+#     all_categories  = Category.query.all()
 # all_categories = []
 class MultiCheckboxField(SelectMultipleField):
     widget = widgets.ListWidget(html_tag='ol', prefix_label=False)
@@ -25,7 +25,7 @@ class MultiCheckboxAtLeastOne():
 class AddFilmForm(FlaskForm):
     title                  = StringField('Title', validators=[DataRequired()])
     release_date           = DateField('Release Date', validators=[DataRequired()])
-    categories             = MultiCheckboxField('Categories', choices=[cat.name for cat in all_categories], validators=[MultiCheckboxAtLeastOne()])
+    categories             = MultiCheckboxField('Categories', validators=[MultiCheckboxAtLeastOne()])
     created_in_country     = StringField('Created in Country:', validators=[DataRequired()])
     submit                 = SubmitField('Submit') 
 
