@@ -1,6 +1,7 @@
 from app import db
 from datetime import datetime
 
+
 countries_films = db.Table('countries_films',
                            db.Column('country_id', db.Integer, db.ForeignKey('country.id')),
                            db.Column('films_id', db.Integer, db.ForeignKey('film.id'))
@@ -60,4 +61,14 @@ class Director(db.Model):
         db.session.add(self)
         db.session.commit()
 
+class User(db.Model):
+    id   = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(64), nullable=False)
+    last_name = db.Column(db.String(64), nullable=False)
+    username = db.Column(db.String(64), nullable=False, unique=True)
+    password1 = db.Column(db.String(64), nullable=False)
+    password2 = db.Column(db.String(64), nullable=False)
 
+    def save_user(self):
+        db.session.add(self)
+        db.session.commit()
