@@ -11,9 +11,9 @@
             <h6 class="card-subtitle mb-2 text-muted">Date: {{ film.release_date.strftime('%d-%m-%Y') }}</h6>
             <h6 class="card-subtitle mb-2 text-muted">Category: {% for c in film.category %}{{ c.name }}{% if loop.index < film.category|length %} - {% endif %}{% endfor %}</h6>
             <h6 class="card-subtitle mb-2 text-muted">Country: {{ film.country.name }}</h6>
-            <a href="#" class="card-link">Card link</a>
+            <a href="{{ url_for('films_bp.choose_director', film_id=film.id) }}" class="card-link">Modify director</a>
             <br/>
-            <a href="#" class="card-link">Another link</a>
+            <a href="{{ url_for('films_bp.edit_film', film_id=film.id) }}" class="card-link">Modify Film</a>
             </div>
           </div>
         {% endfor %}

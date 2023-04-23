@@ -1,0 +1,20 @@
+{% extends 'partials/base.html' %}
+{% block title %}Edit Director{% endblock title %}
+{% block content %}
+<main>
+    <div>
+        <h1>Change director details</h1>
+        <form method="post" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+
+            {{ form.first_name.label }}
+            {{ form.first_name(value=director_to_update.first_name) }}<br/>
+
+            {{ form.last_name.label }}
+            {{ form.last_name(value=director_to_update.last_name) }}<br/>
+            
+            {{ form.submit() }}
+        </form> 
+    </div>
+</main>
+{% endblock content %}

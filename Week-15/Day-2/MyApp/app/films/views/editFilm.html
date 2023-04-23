@@ -1,0 +1,35 @@
+{% extends 'partials/base.html' %}
+{% block title %}Edit Film{% endblock title %}
+{% block content %}
+<main>
+    <div>
+        <h1>Change film details</h1>
+        <form method="post" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+
+            {{ form.title.label }}
+            {{ form.title(value=film_to_update.title) }}<br/>
+            
+            {{ form.release_date.label }}
+            {{ form.release_date(value=film_to_update.release_date) }}<br/>
+
+            <!-- {{ form.categories.label }}
+            {{ form.categories(value=film_to_update.category) }}<br/> -->
+
+            {% for subfield in form.categories %}
+                <tr>
+                    <td>{{ subfield.label }}</td>
+                    <td>{{ subfield() }}</td>
+                </tr><br/>
+            {% endfor %}
+
+            
+            {{ form.created_in_country.label }}
+            {{ form.created_in_country(value=film_to_update.country.name) }}<br/>
+            
+            
+            {{ form.submit() }}
+        </form> 
+    </div>
+</main>
+{% endblock content %}

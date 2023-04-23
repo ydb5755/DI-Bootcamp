@@ -1,0 +1,8 @@
+{% extends 'partials/base.html' %}
+{% block title %}Choose Director{% endblock title %}
+{% block content %}
+    <h1>Which director would you like to modify?</h1>
+    {% for d in directors %}
+        <h3><a href="{{ url_for('films_bp.edit_director', director_id=d.id) }}">{{ d.first_name }}{{ d.last_name }}</a></h3>
+    {% endfor %}
+{% endblock content %}
