@@ -59,3 +59,8 @@ def addDirector():
         # db.session.commit()
         return redirect(url_for('films_bp.homepage'))
     return render_template('addDirector.html', form=form)
+
+
+@films_bp.route('/editDirector/<director_id>')
+def edit_director(director_id):
+    return render_template('editDirector.html')
