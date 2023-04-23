@@ -30,7 +30,7 @@ def crypto_data_call():
     }
     headers = {
     'Accepts': 'application/json',
-    'X-CMC_PRO_API_KEY': 'ae36e70c-29dd-4f98-acd0-531557a42066',
+    'X-CMC_PRO_API_KEY': '',
     }
 
     session = Session()
