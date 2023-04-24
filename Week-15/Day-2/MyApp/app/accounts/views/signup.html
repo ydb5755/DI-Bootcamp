@@ -1,4 +1,24 @@
 {% extends 'partials/base.html' %}
 {% block title %}Signup{% endblock title %}
 {% block content %}
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        {{ form.first_name.label }}
+        {{ form.first_name() }}<br/>
+
+        {{ form.last_name.label }}
+        {{ form.last_name() }}<br/>
+        
+        {{ form.username.label }}
+        {{ form.username() }}<br/>
+        
+        {{ form.password1.label }}
+        {{ form.password1() }}<br/>
+        
+        {{ form.password2.label }}
+        {{ form.password2() }}<br/>
+        
+        {{ form.submit() }}
+    </form>
 {% endblock content %}

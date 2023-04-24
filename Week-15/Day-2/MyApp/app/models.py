@@ -67,8 +67,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(64), nullable=False)
     last_name = db.Column(db.String(64), nullable=False)
     username = db.Column(db.String(64), nullable=False, unique=True)
-    password1 = db.Column(db.String(64), nullable=False)
-    password2 = db.Column(db.String(64), nullable=False)
+    password = db.Column(db.String(64), nullable=False)
 
     def save_user(self):
         db.session.add(self)

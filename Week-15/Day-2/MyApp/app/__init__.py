@@ -1,5 +1,5 @@
 import os
-from flask import Flask, url_for, render_template
+from flask import Flask, url_for, render_template, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
@@ -11,8 +11,7 @@ def create_app():
     app = Flask(__name__)
     basedir = os.path.abspath(os.path.dirname(__file__))
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'portfolio.db')
-    app.config['SECRET_KEY'] = '123456'
-
+    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
     db.init_app(app)
     migrate.init_app(app,db)
     login_manager = LoginManager(app)
@@ -29,6 +28,10 @@ def create_app():
     def load_user(user_id):
         return User.query.get(int(user_id))
     
+    @app.route('/')
+    def _():
+         return redirect(url_for('films_bp.homepage'))
+
     from app.accounts import accounts_bp
     from app.films import films_bp
 

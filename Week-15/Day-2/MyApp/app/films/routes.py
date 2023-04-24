@@ -3,6 +3,7 @@ from app import db
 from app.films import films_bp
 from app.films.forms import AddDirectorForm, AddFilmForm, UpdateDirectorForm
 from app.models import Film, Director, Country, Category
+from flask_login import current_user, login_required
 
 
 
@@ -12,7 +13,10 @@ def homepage():
     return render_template("homepage.html", films=films)
 
 @films_bp.route('/addFilm', methods=('GET', 'POST'))
+@login_required
 def addFilm():
+    if not current_user.id == 1:
+        return redirect(url_for('films_bp.homepage'))
     film_form = AddFilmForm()
     film_form.categories.choices = [cat.name for cat in Category.query.all()]
     if film_form.validate_on_submit():
@@ -40,7 +44,10 @@ def addFilm():
                            )
 
 @films_bp.route('/addDirector', methods=('GET', 'POST'))
+@login_required
 def addDirector():
+    if not current_user.id == 1:
+        return redirect(url_for('films_bp.homepage'))
     form = AddDirectorForm()
     all_films = Film.query.all()
     form.film.choices = [f.title for f in all_films]
@@ -61,12 +68,18 @@ def addDirector():
 
 
 @films_bp.route('/chooseDirector/<film_id>')
+@login_required
 def choose_director(film_id):
+    if not current_user.id == 1:
+        return redirect(url_for('films_bp.homepage'))
     directors = Film.query.filter_by(id=film_id).first().director
     return render_template('chooseDirector.html', directors=directors)
 
 @films_bp.route('/editDirector/<director_id>', methods=('GET', 'POST'))
+@login_required
 def edit_director(director_id):
+    if not current_user.id == 1:
+        return redirect(url_for('films_bp.homepage'))
     director_to_update = Director.query.filter_by(id=director_id).first()
     form = UpdateDirectorForm()
     if form.validate_on_submit():
@@ -79,7 +92,10 @@ def edit_director(director_id):
                            form=form)
 
 @films_bp.route('/editFilm/<film_id>', methods=('GET', 'POST'))
+@login_required
 def edit_film(film_id):
+    if not current_user.id == 1:
+        return redirect(url_for('films_bp.homepage'))
     film_to_update = Film.query.filter_by(id=film_id).first()
     form = AddFilmForm()
     if form.validate_on_submit():

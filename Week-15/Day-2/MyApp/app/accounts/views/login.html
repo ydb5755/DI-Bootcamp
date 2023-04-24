@@ -2,4 +2,15 @@
 
 {% block title %}Login{% endblock title %}
 {% block content %}
+<form method="post" action="" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    
+    {{ form.username.label }}
+    {{ form.username() }}<br/>
+    
+    {{ form.password.label }}
+    {{ form.password() }}<br/>
+    
+    {{ form.submit() }}
+</form>
 {% endblock content %}
