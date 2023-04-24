@@ -53,15 +53,11 @@ def addDirector():
     form.film.choices = [f.title for f in all_films]
     if form.validate_on_submit():
         director = Director.query.filter_by(first_name=form.first_name.data, last_name=form.last_name.data).first()
-        if director: # this code inside the if and else almost the same, please improve it
-            fil = Film.query.filter_by(title=form.film.data).first()
-            director.films.append(fil)
-            director.save_director()
-        else:
+        fil = Film.query.filter_by(title=form.film.data).first()
+        if not director: # this code inside the if and else almost the same, please improve it
             director = Director(first_name=form.first_name.data, last_name=form.last_name.data)
-            fil = Film.query.filter_by(title=form.film.data).first()
-            director.films.append(fil)
-            director.save_director()
+        director.films.append(fil)
+        director.save_director()
         # db.session.commit()
         return redirect(url_for('films_bp.homepage'))
     return render_template('addDirector.html', form=form)
