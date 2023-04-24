@@ -53,7 +53,7 @@ def addDirector():
     form.film.choices = [f.title for f in all_films]
     if form.validate_on_submit():
         director = Director.query.filter_by(first_name=form.first_name.data, last_name=form.last_name.data).first()
-        if director:
+        if director: # this code inside the if and else almost the same, please improve it
             fil = Film.query.filter_by(title=form.film.data).first()
             director.films.append(fil)
             director.save_director()
