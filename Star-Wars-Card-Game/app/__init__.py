@@ -34,6 +34,9 @@ def create_app():
     from app.market import market
     app.register_blueprint(market)
 
+    from app.forum import forum
+    app.register_blueprint(forum)
+
     return app
 
 
