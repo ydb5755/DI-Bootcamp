@@ -11,13 +11,20 @@ class User(db.Model, UserMixin):
     username     = Column(db.String(64), nullable=False, unique=True)
     email        = Column(db.String(64), nullable=False, unique=True)
     password     = Column(db.String(64), nullable=False)
-    coins        = Column(Integer)
+    coins        = Column(Integer, default=50)
     cards        = db.relationship('Card', backref='current_owner', lazy='dynamic')
     threads      = db.relationship('Thread', backref='poster', lazy='dynamic')
+    comments     = db.relationship('Comment', backref='commenter', lazy='dynamic')
 
     def save_user(self):
         db.session.add(self)
         db.session.commit()
+    
+    def get_card_points(self):
+        total = 0
+        for card in self.cards:
+            total += card.point_value
+        return total
 
 class Card(db.Model):
     id = Column(Integer, primary_key=True)

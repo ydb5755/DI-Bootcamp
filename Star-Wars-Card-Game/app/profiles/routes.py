@@ -42,8 +42,7 @@ def signup(): #add url for redirect if authenticated
             profile_type = form.profile_type.data,
             username = form.username.data,
             email = form.email.data,
-            password = generate_password_hash(form.password1.data, method='sha256'),
-            coins = 50
+            password = generate_password_hash(form.password1.data, method='sha256')
         )
         user.save_user()
         flash("You've been signed up successfully! Please login to continue")
