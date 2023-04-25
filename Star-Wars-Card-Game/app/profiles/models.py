@@ -15,6 +15,10 @@ class User(db.Model, UserMixin):
     cards        = db.relationship('Card', backref='current_owner', lazy='dynamic')
     threads      = db.relationship('Thread', backref='poster', lazy='dynamic')
 
+    def save_user(self):
+        db.session.add(self)
+        db.session.commit()
+
 class Card(db.Model):
     id = Column(Integer, primary_key=True)
     name = Column(db.String(64), nullable=False)

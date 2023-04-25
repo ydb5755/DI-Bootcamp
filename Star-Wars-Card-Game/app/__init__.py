@@ -18,12 +18,21 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)
-    # login_manager.login_view 
+    login_manager.login_view = 'profiles.login' #type:ignore
+    from app.profiles.models import User
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(int(user_id))
+
     @app.route('/')
     def _():
-        return redirect(url_for('profiles.home'))
+        return redirect(url_for('profiles.login'))
     from app.profiles import profiles
     app.register_blueprint(profiles)
+
+    from app.market import market
+    app.register_blueprint(market)
 
     return app
 
