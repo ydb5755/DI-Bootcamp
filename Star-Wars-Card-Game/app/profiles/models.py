@@ -32,5 +32,6 @@ class Card(db.Model):
     on_market = Column(Boolean, default=False)
     point_value = Column(Integer, nullable=False)
     details = Column(Text)
+    set_price = Column(Integer)
     owner = Column(Integer, ForeignKey('user.id'))
 

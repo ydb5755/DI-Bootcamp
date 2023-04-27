@@ -31,7 +31,9 @@ def forum_home():
     if thread_form.validate_on_submit():
         thread = Thread(subject=thread_form.subject.data, poster=current_user)
         thread.save_thread()
-        return redirect(url_for('forum.forum_home'))
+        comment_thread_form = thread.comment_on_thread()
+        return redirect(url_for('forum.forum_home',
+                           comment_thread_form=comment_thread_form))
     return render_template('forum_home.html', 
                            coin_leader=c, 
                            point_leader=p,

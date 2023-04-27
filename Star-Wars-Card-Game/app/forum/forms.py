@@ -7,5 +7,6 @@ class ThreadForm(FlaskForm):
     submit = SubmitField('Post to forum')
 
 class CommentForm(FlaskForm):
-    content = TextAreaField('Write your comment here')
+    content = TextAreaField('Write your comment here', validators=[DataRequired()])
+    parent_thread = StringField('parent')
     submit = SubmitField('Submit comment')
