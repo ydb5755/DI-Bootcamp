@@ -1,0 +1,14 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}{{ user.username }}{% endblock title %}
+{% block content %}
+    <h1>Welcome {{ user.username }} - Admin</h1>
+    
+    {% for card in user.cards %}
+        <p>-{{ card.name }}</p>
+        <p>-{{ card.on_market }}</p>
+        <p>-{{ card.point_value }}</p>
+        <p>-{{ card.details }}</p>
+
+    {% endfor %}
+{% endblock content %}
