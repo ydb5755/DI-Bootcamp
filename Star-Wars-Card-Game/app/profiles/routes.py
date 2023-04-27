@@ -72,5 +72,7 @@ def admin():
     if not current_user.is_authenticated: #type:ignore
         redirect(url_for('profiles.login'))
     cards_off_market = Card.query.filter_by(on_market=False)
-    return render_template('admin.html', 
+    user = User.query.filter_by(id=1).first()
+    return render_template('admin.html',
+                           user=user, 
                            cards_off_market=cards_off_market)
