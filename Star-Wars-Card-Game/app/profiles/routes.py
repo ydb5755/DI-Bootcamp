@@ -1,4 +1,4 @@
-from flask import current_app, render_template, redirect, url_for, flash
+from flask import current_app, render_template, redirect, url_for, flash, request
 from app.profiles import profiles
 from app.profiles.forms import LoginForm, SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -8,7 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 @profiles.route('/login')
 def login(): #add url for redirect if authenticated
     if current_user.is_authenticated: # type: ignore
-        return redirect(url_for(''))
+        return redirect(url_for('forum.forum_home'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -16,7 +16,9 @@ def login(): #add url for redirect if authenticated
             flash('Please check your login details and try again.')
             return redirect(url_for('profiles.login'))
         login_user(user, remember=form.remember.data)
-        return redirect(url_for(''))
+        next_page = request.args.get('next')
+        return redirect(next_page) if next_page else redirect(url_for('forum.forum_home'))
+        # return redirect(url_for(''))
     return render_template('login.html')
 
 @profiles.route('/signup')
@@ -55,3 +57,9 @@ def signup(): #add url for redirect if authenticated
 def logout():
     logout_user()
     return redirect(url_for('profiles.login'))
+
+@profiles.route('/profile/<user_id>')
+@login_required
+def profile_page(user_id):
+    user = User.query.filter_by(id=user_id)
+    return render_template('profile_page.html', user=user)
