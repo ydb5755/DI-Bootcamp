@@ -1,6 +1,6 @@
 from app import db
 from flask_login import UserMixin
-from sqlalchemy import Column, Integer, ForeignKey, Boolean, Text
+from sqlalchemy import Column, Integer, ForeignKey, Boolean, Text, JSON
 
 
 class User(db.Model, UserMixin):
@@ -31,11 +31,11 @@ class Card(db.Model):
     name = Column(db.String(64), nullable=False)
     on_market = Column(Boolean, default=False)
     point_value = Column(Integer, nullable=False)
-    details = Column(Text)
+    details = Column(JSON)
     set_price = Column(Integer)
     owner = Column(Integer, ForeignKey('user.id'))
 
-    def set_card_price_and_move_to_market(self, num):
+    def set_card_price_and_move_to_market(self, num): 
         self.set_price = num
         self.on_market = True
 

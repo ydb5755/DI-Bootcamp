@@ -2,7 +2,7 @@ from flask import current_app, render_template, redirect, url_for, flash, reques
 from app.profiles import profiles
 from app.profiles.forms import LoginForm, SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.profiles.models import User
+from app.profiles.models import User, Card
 from werkzeug.security import generate_password_hash, check_password_hash
 
 @profiles.route('/login', methods=('GET', 'POST'))
@@ -63,3 +63,14 @@ def logout():
 def profile_page(user_id):
     user = User.query.filter_by(id=user_id).first()
     return render_template('profile_page.html', user=user) 
+
+@profiles.route('/admin')
+@login_required
+def admin():
+    if current_user.is_authenticated and not current_user.id == 1: #type:ignore
+        redirect(url_for('forum.forum_home'))
+    if not current_user.is_authenticated: #type:ignore
+        redirect(url_for('profiles.login'))
+    cards_off_market = Card.query.filter_by(on_market=False)
+    return render_template('admin.html', 
+                           cards_off_market=cards_off_market)

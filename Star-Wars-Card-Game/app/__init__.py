@@ -36,7 +36,6 @@ def create_app():
 
     from app.forum import forum
     app.register_blueprint(forum)
-
     return app
 
 
@@ -44,16 +43,4 @@ def create_app():
 
 
 
-
-def swapi_data_call(cat, num, attr):
-    url = 'https://swapi.dev/api/'
-
-    session = Session()
-    try:
-        response = session.get(url + f'{cat}/{num}/')
-        data = json.loads(response.text)
-        return data[attr]
-    except (ConnectionError, Timeout, TooManyRedirects) as e:
-        return e
-    
 

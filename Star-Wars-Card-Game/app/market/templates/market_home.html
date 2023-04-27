@@ -3,9 +3,58 @@
 {% block title %}Market Home{% endblock title %}
 {% block content %}
 {% for card in cards_on_market %}
-    <p>-{{ card.name }}</p>
-    <p>-{{ card.point_value }}</p>
-    <p>-{{ card.set_price }}</p>
-    <a href="{{ url_for('market.card_page', card_id=card.id) }}">See more</a>
+    {% if card.details['Height'] %}
+        <div style="border:1px black solid;">
+            <p>-Name: {{ card.name }}</p>
+            <p>-Point Value: {{ card.point_value }}</p>
+            <p>-Price: {{ card.set_price }}</p>
+            <p>-Height:{{ card.details['Height'] }}</p>
+            <p>-Mass:{{ card.details['Mass'] }}</p>
+            <p>-Hair Color:{{ card.details['Hair_Color'] }}</p>
+            <p>-Skin Color:{{ card.details['Skin_Color'] }}</p>
+            <p>-Eye Color:{{ card.details['Eye_Color'] }}</p>
+            <p>-Gender:{{ card.details['Gender'] }}</p>
+            <a href="{{ url_for('market.card_page', card_id=card.id) }}">See more</a>
+        </div>
+    {% elif card.details['hyperdrive_rating'] %}
+        <div style="border:1px black solid;">
+            <p>-Name: {{ card.name }}</p>
+            <p>-Point Value: {{ card.point_value }}</p>
+            <p>-Price: {{ card.set_price }}</p>
+            <p>-Model:{{ card.details['model'] }}</p>
+            <p>-Manufacturer:{{ card.details['manufacturer'] }}</p>
+            <p>-Max Atmosphering Speed:{{ card.details['max_atmosphering_speed'] }}</p>
+            <p>-Passengers:{{ card.details['passengers'] }}</p>
+            <p>-Hyperdrive Rating:{{ card.details['hyperdrive_rating'] }}</p>
+            <p>-Starship Class:{{ card.details['starship_class'] }}</p>
+            <a href="{{ url_for('market.card_page', card_id=card.id) }}">See more</a>
+        </div>
+    {% elif card.details['crew'] %}
+        <div style="border:1px black solid;">
+            <p>-Name: {{ card.name }}</p>
+            <p>-Point Value: {{ card.point_value }}</p>
+            <p>-Price: {{ card.set_price }}</p>
+            <p>-Model:{{ card.details['model'] }}</p>
+            <p>-Manufacturer:{{ card.details['manufacturer'] }}</p>
+            <p>-Max Atmosphering Speed:{{ card.details['max_atmosphering_speed'] }}</p>
+            <p>-Passengers:{{ card.details['passengers'] }}</p>
+            <p>-Crew:{{ card.details['crew'] }}</p>
+            <p>-Cargo Capacity:{{ card.details['cargo_capacity'] }}</p>
+            <a href="{{ url_for('market.card_page', card_id=card.id) }}">See more</a>
+        </div>
+    {% else %}
+        <div style="border:1px black solid;">
+            <p>-Name: {{ card.name }}</p>
+            <p>-Point Value: {{ card.point_value }}</p>
+            <p>-Price: {{ card.set_price }}</p>
+            <p>-Diameter:{{ card.details['diameter'] }}</p>
+            <p>-Climate:{{ card.details['climate'] }}</p>
+            <p>-Gravity:{{ card.details['gravity'] }}</p>
+            <p>-Terrain:{{ card.details['terrain'] }}</p>
+            <p>-Surface Water:{{ card.details['surface_water'] }}</p>
+            <p>-Population:{{ card.details['population'] }}</p>
+            <a href="{{ url_for('market.card_page', card_id=card.id) }}">See more</a>
+        </div>
+    {% endif %}
 {% endfor %}
 {% endblock content %}

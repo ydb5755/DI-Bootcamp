@@ -5,7 +5,7 @@ from app.profiles.models import Card
 
 
 
-@market.route('/marketplace_home')
+@market.route('/')
 @login_required
 def marketplace_home():
     all_cards = Card.query.all()
