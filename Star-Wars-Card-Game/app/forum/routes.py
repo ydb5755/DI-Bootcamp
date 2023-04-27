@@ -29,13 +29,12 @@ def forum_home():
     all_threads = Thread.query.all()
     thread_form = ThreadForm()
     if thread_form.validate_on_submit():
-        thread = Thread(subject=thread_form.subject.data, poster=current_user)
+        thread = Thread(subject=thread_form.subject.data, user=current_user)
         thread.save_thread()
-        comment_thread_form = thread.comment_on_thread()
-        return redirect(url_for('forum.forum_home',
-                           comment_thread_form=comment_thread_form))
+        return redirect(url_for('forum.forum_home'))
     return render_template('forum_home.html',
                            all_threads=all_threads,
+                           thread_form=thread_form,
                            coin_leaders=c,
                            point_leaders=p)
 
@@ -46,8 +45,10 @@ def thread_page(thread_id):
     thread = Thread.query.filter_by(id=thread_id).first()
     if comment_form.validate_on_submit():
         comment = Comment(content=comment_form.content.data,
-                          thread_parent=thread,
-                          commenter=current_user)
+                          thread=thread,
+                          user=current_user)
         comment.save_comment()
         return redirect(url_for('forum.thread_page', thread_id=thread.id))
-    return render_template('thread_page.html')
+    return render_template('thread_page.html',
+                           thread=thread,
+                           comment_form=comment_form)

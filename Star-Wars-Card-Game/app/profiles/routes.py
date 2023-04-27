@@ -61,5 +61,5 @@ def logout():
 @profiles.route('/profile/<user_id>')
 @login_required
 def profile_page(user_id):
-    user = User.query.filter_by(id=user_id)
-    return render_template('profile_page.html', user=user)
+    user = User.query.filter_by(id=user_id).first()
+    return render_template('profile_page.html', user=user) 

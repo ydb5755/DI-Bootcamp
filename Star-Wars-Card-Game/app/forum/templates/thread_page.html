@@ -1,5 +1,21 @@
 {% extends 'partials/base.html' %}
 
-{% block title %}{% endblock title %}
+{% block title %}{{ thread.subject }}{% endblock title %}
 {% block content %}
+<h1>{{ thread.subject }}</h1><h3>Posted by <a href="{{ url_for('profiles.profile_page', user_id=thread.user.id) }}">{{ thread.user.username }}</a></h3>
+<ul>
+    {% for comment in thread.comments %}
+        <li>
+            <p>{{ comment.content }} -{{ comment.user.username }}</p>
+        </li>
+    {% endfor %}
+</ul>
+<form method="post" action="" enctype="multipart/form-data">
+    {{ comment_form.hidden_tag() }}
+
+    {{ comment_form.content.label }}
+    {{ comment_form.content() }}
+
+    {{ comment_form.submit() }}
+</form>
 {% endblock content %}

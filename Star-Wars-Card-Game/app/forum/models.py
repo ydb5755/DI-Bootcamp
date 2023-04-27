@@ -1,11 +1,11 @@
 from app import db
-from sqlalchemy import Column, Integer, ForeignKey, Boolean, Text
+from sqlalchemy import Column, Integer, ForeignKey, Boolean, Text, String
 from app.forum.forms import CommentForm
 
 
 class Thread(db.Model):
     id = Column(Integer, primary_key=True)
-    subject = Column(db.String(64), nullable=False)
+    subject = Column(String(64), nullable=False)
     comments = db.relationship('Comment', backref='thread', lazy='dynamic')
     poster = Column(Integer, ForeignKey('user.id'))
 
@@ -20,7 +20,7 @@ class Thread(db.Model):
 
 class Comment(db.Model):
     id = Column(Integer, primary_key=True)
-    content = Column(Text, nullable=False)
+    content = Column(String(2000), nullable=False)
     thread_parent = Column(Integer, ForeignKey('thread.id'))
     commenter = Column(Integer, ForeignKey('user.id'))
 

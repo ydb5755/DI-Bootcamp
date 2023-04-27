@@ -1,5 +1,24 @@
 {% extends 'partials/base.html' %}
 
-{% block title %}{% endblock title %}
+{% block title %}Forum Home{% endblock title %}
 {% block content %}
+<form method="post" action="" enctype="multipart/form-data">
+    {{ thread_form.hidden_tag() }}
+
+    {{ thread_form.subject.label }}
+    {{ thread_form.subject() }}<br/>
+    
+    {{ thread_form.submit() }}
+</form>
+<h1>Threads</h1>
+{% for thread in all_threads %}
+    <h3><a href="{{ url_for('forum.thread_page', thread_id=thread.id) }}">{{ thread.subject }}</a></h3>
+    <ul>
+        {% for comment in thread.comments %}
+            <li>
+                <p>{{ comment.content }} -{{ comment.user.username }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endfor %}
 {% endblock content %}

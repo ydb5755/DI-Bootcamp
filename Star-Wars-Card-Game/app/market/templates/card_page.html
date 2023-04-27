@@ -1,5 +1,14 @@
 {% extends 'partials/base.html' %}
 
-{% block title %}{% endblock title %}
+{% block title %}{{ card.name }}{% endblock title %}
 {% block content %}
+    <p>Name: {{ card.name }}</p>
+    <p>Points: {{ card.point_value }}</p>
+    <p>Details: {{ card.details }}</p>
+    {% if card.on_market == true %}
+        <p>Price: {{ card.set_price }}</p>
+        {% if not card.current_owner.id == current_user.id %}
+            <a href="{{ url_for('market.purchase', card_id=card.id) }}">Buy this card!</a>
+        {% endif %}
+    {% endif %}
 {% endblock content %}

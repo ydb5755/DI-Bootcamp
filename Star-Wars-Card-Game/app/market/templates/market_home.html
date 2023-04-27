@@ -1,5 +1,11 @@
 {% extends 'partials/base.html' %}
 
-{% block title %}{% endblock title %}
+{% block title %}Market Home{% endblock title %}
 {% block content %}
+{% for card in cards_on_market %}
+    <p>-{{ card.name }}</p>
+    <p>-{{ card.point_value }}</p>
+    <p>-{{ card.set_price }}</p>
+    <a href="{{ url_for('market.card_page', card_id=card.id) }}">See more</a>
+{% endfor %}
 {% endblock content %}

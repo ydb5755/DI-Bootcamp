@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
     last_name    = Column(db.String(64), nullable=False)
     profile_type = Column(db.String(64), nullable=False)
     username     = Column(db.String(64), nullable=False, unique=True)
-    email        = Column(db.String(64), nullable=False, unique=True)
+    email        = Column(db.String(64), nullable=False, unique=True) 
     password     = Column(db.String(64), nullable=False)
     coins        = Column(Integer, default=50)
     cards        = db.relationship('Card', backref='current_owner', lazy='dynamic')
@@ -34,4 +34,8 @@ class Card(db.Model):
     details = Column(Text)
     set_price = Column(Integer)
     owner = Column(Integer, ForeignKey('user.id'))
+
+    def set_card_price_and_move_to_market(self, num):
+        self.set_price = num
+        self.on_market = True
 
