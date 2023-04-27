@@ -13,8 +13,8 @@ class User(db.Model, UserMixin):
     password     = Column(db.String(64), nullable=False)
     coins        = Column(Integer, default=50)
     cards        = db.relationship('Card', backref='current_owner', lazy='dynamic')
-    threads      = db.relationship('Thread', backref='poster', lazy='dynamic')
-    comments     = db.relationship('Comment', backref='commenter', lazy='dynamic')
+    threads      = db.relationship('Thread', backref='user', lazy='dynamic') 
+    comments     = db.relationship('Comment', backref='user', lazy='dynamic')
 
     def save_user(self):
         db.session.add(self)

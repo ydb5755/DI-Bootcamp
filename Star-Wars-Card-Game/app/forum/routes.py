@@ -11,8 +11,8 @@ def get_leaders():
         all_users = User.query.all()
         # coin_leaders = User.query.all().order_by(User.coins)
         # point_leaders = User.query.all().order_by(sum(User.cards.point_value))
-        coin_leader = all_users.first()
-        point_leader = all_users.first()
+        coin_leader = all_users[0]
+        point_leader = all_users[0]
         for user in all_users:
             if user.coins > coin_leader.coins:
                 coin_leader = user
@@ -22,7 +22,7 @@ def get_leaders():
                 point_leader = user
     return coin_leader, point_leader
 
-@forum.route('/')
+@forum.route('/', methods=('GET', 'POST'))
 @login_required
 def forum_home():
     c, p = get_leaders()
@@ -34,12 +34,12 @@ def forum_home():
         comment_thread_form = thread.comment_on_thread()
         return redirect(url_for('forum.forum_home',
                            comment_thread_form=comment_thread_form))
-    return render_template('forum_home.html', 
-                           coin_leader=c, 
-                           point_leader=p,
-                           all_threads=all_threads)
+    return render_template('forum_home.html',
+                           all_threads=all_threads,
+                           coin_leaders=c,
+                           point_leaders=p)
 
-@forum.route('/thread/<thread_id>')
+@forum.route('/thread/<thread_id>', methods=('GET', 'POST'))
 @login_required
 def thread_page(thread_id):
     comment_form = CommentForm()

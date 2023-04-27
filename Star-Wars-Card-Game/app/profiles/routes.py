@@ -5,8 +5,8 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.profiles.models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 
-@profiles.route('/login')
-def login(): #add url for redirect if authenticated
+@profiles.route('/login', methods=('GET', 'POST'))
+def login(): 
     if current_user.is_authenticated: # type: ignore
         return redirect(url_for('forum.forum_home'))
     form = LoginForm()
@@ -19,12 +19,12 @@ def login(): #add url for redirect if authenticated
         next_page = request.args.get('next')
         return redirect(next_page) if next_page else redirect(url_for('forum.forum_home'))
         # return redirect(url_for(''))
-    return render_template('login.html')
+    return render_template('login.html', form=form)
 
-@profiles.route('/signup')
-def signup(): #add url for redirect if authenticated
+@profiles.route('/signup', methods=('GET', 'POST'))
+def signup(): 
     if current_user.is_authenticated: # type: ignore
-        return redirect(url_for(''))
+        return redirect(url_for('forum.forum_home'))
     form = SignUpForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -49,7 +49,7 @@ def signup(): #add url for redirect if authenticated
         user.save_user()
         flash("You've been signed up successfully! Please login to continue")
         return redirect(url_for('profiles.login'))
-    return render_template('signup.html')
+    return render_template('signup.html', form=form)
 
 
 @profiles.route('/logout')

@@ -6,7 +6,7 @@ from app.forum.forms import CommentForm
 class Thread(db.Model):
     id = Column(Integer, primary_key=True)
     subject = Column(db.String(64), nullable=False)
-    comments = db.relationship('Comment', backref='thread_parent', lazy='dynamic')
+    comments = db.relationship('Comment', backref='thread', lazy='dynamic')
     poster = Column(Integer, ForeignKey('user.id'))
 
     def save_thread(self):
