@@ -6,7 +6,7 @@ from app import db
 import random
 
 def swapi_people_call(num):
-    url = 'https://swapi.dev/api/people/'
+    url = 'https://swapi.dev/api/people/' 
 
     session = Session()
     try:
@@ -17,7 +17,7 @@ def swapi_people_call(num):
         return e
 
 def swapi_planets_call(num):
-    url = 'https://swapi.dev/api/planets/'
+    url = 'https://swapi.dev/api/planets/' # you created a global var called url which is great so use it by change it to 'https://swapi.dev/api' and update all the places
 
     session = Session()
     try:
@@ -76,7 +76,7 @@ def create_people_cards():
 def create_planets_cards():
     for x in range(swapi_planets_call('/')['count']): #type: ignore
         planet = swapi_planets_call(x + 1)
-        try:
+        try: # why you put this in try and except? inorder to check if the planet contains name key you can do the following: planet.get('name', None) == None
             if planet['name'] == None:  #type: ignore
                 continue
             card = Card(
